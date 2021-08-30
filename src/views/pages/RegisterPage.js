@@ -43,8 +43,8 @@ function LoginPage(props) {
 		//alert(`Submitting Name ${email}`);
 		const res = await axios.get(getRegisterUrl,{ params: { firstname: firstname, lastname: lastname, email: email, password: password, phone: phone, address: address, zipcode: zipcode, gender: gender }});
 		console.log(res);
-		
-		if(res.data.status === 1){
+		props.history.push('/login');
+		/*if(res.data.status === 1){
 			//const token = res.data.token;
 			//setToken(token);
 			//localStorage.setItem('token', token);
@@ -52,7 +52,7 @@ function LoginPage(props) {
 		}else{
 			const errorMessage = res.data.msg;
 			setErrorMessage(errorMessage);
-		}
+		}*/
 		//setToken(token);
 	}
 
