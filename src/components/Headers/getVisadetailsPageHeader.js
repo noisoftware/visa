@@ -54,7 +54,7 @@ function GetViasDetailsHeader(props) {
   let pageHeader = React.createRef();
 
   React.useEffect(() => {
-    if (window.innerWidth > 991) {
+    /*if (window.innerWidth > 991) {
       const updateScroll = () => {
         let windowScrollTop = window.pageYOffset / 3;
         pageHeader.current.style.transform =
@@ -64,7 +64,7 @@ function GetViasDetailsHeader(props) {
       return function cleanup() {
         window.removeEventListener("scroll", updateScroll);
       };
-    }
+    }*/
   });
   return (
     <>
