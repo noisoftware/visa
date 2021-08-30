@@ -44,7 +44,7 @@ function VerifyUser(props) {
 		<div className="wrapper">
 			<GetViasHeader />
 			<h2>Welcome to Visitevisa</h2>
-			<div>Thank You {visaContent.first_name},<br/>You have registered successfully. Your Account has been activated. </div>
+			<div>Thank You ,<br/>You have registered successfully. Your Account has been activated. </div>
 			<Carousel />
 			<DefaultFooter />
 		</div>
