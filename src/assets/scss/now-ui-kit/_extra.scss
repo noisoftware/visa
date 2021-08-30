@@ -1,0 +1,53 @@
+.section-step{
+        background-image: url(../../img/texture-bg.jpeg);
+        h2{ color: $blue; }
+        h4{ color: $primary-color }
+}
+
+
+.requirements_slider{
+    background-image: url(../../img/texture-bg.jpeg);
+    h3{ color: $blue; text-transform: uppercase; }
+    h4{ color: $primary-color }
+
+.requrement_slider_holder{  
+   
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 60%,rgba(255,255,255,0) 100%);
+background: linear-gradient(to bottom,  rgba(255,255,255,1) 60%,rgba(255,255,255,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+
+
+
+
+.slick-slider{
+.slick-slide{
+    .base_holder{
+        width: 80%;
+        .card-img-overlay{
+            top: 25%;
+            bottom: auto;
+            right: -200px;
+            left:50%;
+            background-color: $blue;
+            padding: 25px;
+        }
+    }
+}
+
+}
+}
+}
+
+.top_most_slider_holder{
+    a{text-decoration:none ;}
+    h3{ color: $blue; text-transform: uppercase; }
+    h4{ color: $primary-color }
+    .card{
+    .card-body{padding: 8px 16px;}
+    .card-footer{padding: 8px 16px; margin-top: 0; border-top:1px solid $primary-color ;}
+}
+}
+.slick-prev:before, .slick-next:before{
+    color: $blue!important;
+}
