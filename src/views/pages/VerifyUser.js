@@ -28,11 +28,11 @@ function VerifyUser(props) {
   const [visaContent, setVisaContentData] = useState('verifyuser');
 
 	const getVisaContent = async () => {
-		const res = await axios.get(getVerifyUserUrl,{ params: { country: props.match.params.country }});
+		const res = await axios.get(getVerifyUserUrl,{ params: { country: props.match.params.user }});
 		//console.log(response);
-		const visaContent = res.data.content;
+		const visaContent = res.data.user;
 		setVisaContentData(visaContent);
-		//console.log(pageContent);
+		console.log(visaContent);
 	};
 
 	useEffect(() => {
