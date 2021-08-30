@@ -17,6 +17,7 @@ import ContactUspage from "./views/pages/ContactUs.js";
 import GetVisapage from "./views/pages/GetVisa.js";
 import GetVisaDetails from "./views/pages/GetVisaDetails.js";
 import GetVisaFormpage from "./views/pages/GetVisaform.js";
+import VerifyUser from "./views/pages/VerifyUser.js";
 
 
 ReactDOM.render(
@@ -60,6 +61,10 @@ ReactDOM.render(
         <Route
           path="/getvisadetails/:country"
           component={GetVisaDetails}
+        />
+		<Route
+          path="/verify-user/:user"
+          component={VerifyUser}
         />
         
         <Redirect to="/index" />
