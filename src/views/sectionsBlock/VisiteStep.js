@@ -46,7 +46,7 @@ function VisiteVisaStep() {
 					</Row>
 					<div className="flag_holder">
 					<Row>
-						<Col to="/getvisadetails/armenia" tag={Link} md="3" className="flags mb-3">
+						<Col to="/getvisadetails/armenia" tag={Link} md="3" className="flags mb-3" >
 							<img alt="..." className="pull-left mr-2" src={require("../../assets/img/flagsb/am.png").default} ></img>
 							<p >Armenia</p>
 						</Col>
