@@ -42,6 +42,7 @@ function VerifyUser(props) {
     <>
 		<IndexNavbar />
 		<div className="wrapper">
+			<GetViasHeader />
 			<h2>Welcome to Visitevisa</h2>
 			<div>Thank You <br/>You have registered successfully. Your Account has been activated. </div>
 			<Carousel />
