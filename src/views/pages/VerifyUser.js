@@ -28,7 +28,7 @@ function VerifyUser(props) {
   const [visaContent, setVisaContentData] = useState('verifyuser');
 
 	const getVisaContent = async () => {
-		const res = await axios.get(getVerifyUserUrl,{ params: { country: props.match.params.user }});
+		const res = await axios.get(getVerifyUserUrl,{ params: { user_id: props.match.params.user }});
 		//console.log(response);
 		const visaContent = res.data.user;
 		setVisaContentData(visaContent);
@@ -44,7 +44,7 @@ function VerifyUser(props) {
 		<div className="wrapper">
 			<GetViasHeader />
 			<h2>Welcome to Visitevisa</h2>
-			<div>Thank You <br/>You have registered successfully. Your Account has been activated. </div>
+			<div>Thank You {visaContent.first_name},<br/>You have registered successfully. Your Account has been activated. </div>
 			<Carousel />
 			<DefaultFooter />
 		</div>
