@@ -36,21 +36,27 @@ function RegisterPage(props) {
 	const [confirmPassword, setConfirmPassword] = useState();
 	const [accountType, setAccountType] = useState();
 	const [errorMessage, setErrorMessage] = useState('');
+	const [successMessage, setSuccessMessage] = useState('');
 	const handleSubmit = async e => {
 		e.preventDefault();
 		//alert(`Submitting Name ${email}`);
 		const res = await axios.get(getRegisterUrl,{ params: { firstname: firstname, lastname: lastname, email: email, password: password, accounttype:accountType }});
 		console.log(res);
-		props.history.push('/login');
-		/*if(res.data.status === 1){
+		//props.history.push('/login');
+		if(res.data.status === 1){
 			//const token = res.data.token;
 			//setToken(token);
 			//localStorage.setItem('token', token);
-			props.history.push('/login');
+			const successMessage = res.data.msg;
+			setSuccessMessage(successMessage);
+			 const timer = setTimeout(() => {
+			  props.history.push('/login');
+			}, 5000);
+			return () => clearTimeout(timer);
 		}else{
 			const errorMessage = res.data.msg;
 			setErrorMessage(errorMessage);
-		}*/
+		}
 		//setToken(token);
 	}
 
@@ -109,7 +115,9 @@ function RegisterPage(props) {
 										{errorMessage && (
 										  <span className="error"> {errorMessage} </span>
 										)}
-						
+										{successMessage && (
+										  <span className="success"> {successMessage} </span>
+										)}
 											<InputGroup className={"no-border input-lg" + (firstnameFocus ? " input-group-focus" : "")} >
 												<InputGroupAddon addonType="prepend">
 													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
@@ -128,7 +136,12 @@ function RegisterPage(props) {
 												<InputGroupAddon addonType="prepend">
 													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
 												</InputGroupAddon>
-												<Input	placeholder="Account Type..." type="text" onFocus={() => accounttypeFocus(true)} onBlur={() => accounttypeFocus(false)} value={accountType} onChange={e => setAccountType(e.target.value)} ></Input>
+												<Input type="select" name="select" id="exampleSelect" value={accountType} onChange={e => setAccountType(e.currentTarget.value)}>
+													<option>Select Account Type</option>
+													<option>Personal</option>
+													<option>Corporate</option>
+												</Input>
+												
 											</InputGroup>
 											<InputGroup className={"no-border input-lg" + (emailFocus ? " input-group-focus" : "")} >
 												<InputGroupAddon addonType="prepend">
@@ -146,7 +159,7 @@ function RegisterPage(props) {
 												<InputGroupAddon addonType="prepend">
 													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
 												</InputGroupAddon>
-												<Input placeholder="Password..." type="text" onFocus={() => confirmpasswordFocus(true)} onBlur={() => confirmpasswordFocus(false)} value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} ></Input>
+												<Input placeholder="Password..." type="text" onFocus={() => setConfirmPasswordFocus(true)} onBlur={() => setConfirmPasswordFocus(false)} value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} ></Input>
 											</InputGroup>
 											
 										</CardBody>

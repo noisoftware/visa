@@ -86,7 +86,7 @@ function GetViasDetailsHeader(props) {
 											<option>Select Visa Type</option>
 										{ 
 											types.map((typ,index)=>( 
-											<option value={typ.id}>{typ.visa_type}</option> 
+											<option key={index} value={typ.id}>{typ.visa_type}</option> 
 											))}
 										</Input>
 									</FormGroup>

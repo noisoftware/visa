@@ -31,21 +31,28 @@ function ForgotPasswordPage(props) {
 	
 	const [email, setEmail] = useState();
 	const [errorMessage, setErrorMessage] = useState('');
+	const [successMessage, setSuccessMessage] = useState('');
 	const handleSubmit = async e => {
 		e.preventDefault();
 		//alert(`Submitting Name ${email}`);
 		const res = await axios.get(getForgotPasswordUrl,{ params: {  email: email }});
 		console.log(res);
-		props.history.push('/login');
-		/*if(res.data.status === 1){
+		//props.history.push('/login');
+		if(res.data.status === 1){
 			//const token = res.data.token;
 			//setToken(token);
 			//localStorage.setItem('token', token);
-			props.history.push('/login');
+			const successMessage = res.data.msg;
+			setSuccessMessage(successMessage);
+			 const timer = setTimeout(() => {
+			  props.history.push('/login');
+			}, 5000);
+			return () => clearTimeout(timer);
+			
 		}else{
 			const errorMessage = res.data.msg;
 			setErrorMessage(errorMessage);
-		}*/
+		}
 		//setToken(token);
 	}
 
@@ -99,6 +106,9 @@ function ForgotPasswordPage(props) {
 										<CardBody>
 										{errorMessage && (
 										  <span className="error"> {errorMessage} </span>
+										)}
+										{successMessage && (
+										  <span className="success"> {successMessage} </span>
 										)}
 											<InputGroup className={"no-border input-lg" + (emailFocus ? " input-group-focus" : "")} >
 												<InputGroupAddon addonType="prepend">
