@@ -19,6 +19,7 @@ import {
 // core components
 import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
 import DefaultFooter from "../../components/Footers/DefaultFooter.js";
+
 import axios from "axios";
 import { config } from '../../constant';
 //const getLoginUrl = "http://localhost/admin/api/login";
@@ -66,37 +67,51 @@ function LoginPage(props) {
   const [zipcodeFocus, setZipCodeFocus] = React.useState(false);
   const [genderFocus, setGenderFocus] = React.useState(false);
   React.useEffect(() => {
-    document.body.classList.add("login-page");
-    document.body.classList.add("sidebar-collapse");
-    document.documentElement.classList.remove("nav-open");
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
+    document.body.classList.add("register-page");
+	//document.body.classList.add("login-page");
+    //document.body.classList.add("sidebar-collapse");
+    //document.documentElement.classList.remove("nav-open");
+  //  window.scrollTo(0, 0);
+    //document.body.scrollTop = 0;
     return function cleanup() {
-      document.body.classList.remove("login-page");
-      document.body.classList.remove("sidebar-collapse");
+      document.body.classList.remove("register-page");
+//document.body.classList.remove("sidebar-collapse");
     };
   }, []);
   
   return (
     <>
-      {/* <ExamplesNavbar /> */}
+     
 		<IndexNavbar />
-			<div className="page-header clear-filter" filter-color="blue">
-				<div className="page-header-image" style={{ backgroundImage:"url(" + require("../../assets/img/login.jpg").default + ")", }} ></div>
+		<div className="page-header page-header-small">
+        <div
+          className="page-header-image"
+          style={{
+            backgroundImage:
+              "url(" + require("../../assets/img/bg6.jpg").default + ")",
+          }}
+          //ref={pageHeader}
+        ></div>
+        <div className="content-center">
+          <Container>
+		  <h2>REGISTRATION FORM</h2>
+           
+          </Container>
+        </div>
+      </div>
+			
+				{/* <div className="page-header-image" style={{ backgroundImage:"url(" + require("../../assets/img/login.jpg").default + ")", }} ></div> */}
 					<div className="content">
 						<Container>
-							<Col className="ml-auto mr-auto" md="4">
-								<Card className="card-login card-plain">
+							<Col className="ml-auto mr-auto" md="8">
+								<Card className="card-register card-plain">
 									<Form className="form" method="" onSubmit={handleSubmit}>
-										<CardHeader className="text-center">
-											<div className="logo-container">
-												<img alt="..." src={require("../../assets/img/now-logo.png").default} ></img>
-											</div>
-										</CardHeader>
+									
 										<CardBody>
 										{errorMessage && (
-										  <p className="error"> {errorMessage} </p>
+										  <span className="error"> {errorMessage} </span>
 										)}
+						
 											<InputGroup className={"no-border input-lg" + (firstnameFocus ? " input-group-focus" : "")} >
 												<InputGroupAddon addonType="prepend">
 													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
@@ -151,11 +166,13 @@ function LoginPage(props) {
 										</CardBody>
 										<CardFooter className="text-center">
 											<Button type="submit" className="btn-round" color="info"  size="lg" >Register</Button>
-											<div className="pull-left">
+											{/* <Button type="submit" className="btn-round" color="info"  size="lg" >Back to Login</Button> */}
+											<a className="btn-round btn btn-dark btn-lg" href="/login" >Back to Login</a>
+											{/* <div className="pull-left">
 												<h6>
 													<a className="link" href="/login" >Back to<br/>Login</a>
 												</h6>
-											</div>
+											</div> */}
 											
 										</CardFooter>
 									</Form>
@@ -164,7 +181,7 @@ function LoginPage(props) {
 						</Container>
 					</div>
        
-				</div>
+			
 			<DefaultFooter />
     </>
   );

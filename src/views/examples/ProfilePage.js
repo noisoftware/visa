@@ -39,7 +39,7 @@ function ProfilePage() {
         <ProfilePageHeader />
         <div className="section">
           <Container>
-            <div className="button-container">
+            {/* <div className="button-container">
               <Button className="btn-round" color="info" size="lg">
                 Follow
               </Button>
@@ -66,8 +66,11 @@ function ProfilePage() {
                 Follow me on Instagram
               </UncontrolledTooltip>
             </div>
-            <h3 className="title">About me</h3>
-            <h5 className="description">
+            */}
+           
+           
+            <h3 className="title">About sbjhasgjdhag</h3>
+            <h5 className="description text-dark">
               An artist of considerable range, Ryan — the name taken by
               Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
               and records all of his own music, giving it a warm, intimate feel

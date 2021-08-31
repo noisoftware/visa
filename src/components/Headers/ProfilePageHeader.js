@@ -41,7 +41,7 @@ function ProfilePageHeader() {
           </div>
           <h3 className="title">Ryan Scheinder</h3>
           <p className="category">Photographer</p>
-          <div className="content">
+          {/* <div className="content">
             <div className="social-description">
               <h2>26</h2>
               <p>Comments</p>
@@ -54,7 +54,7 @@ function ProfilePageHeader() {
               <h2>48</h2>
               <p>Bookmarks</p>
             </div>
-          </div>
+          </div> */}
         </Container>
       </div>
     </>
