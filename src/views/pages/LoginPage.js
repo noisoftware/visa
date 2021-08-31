@@ -110,7 +110,7 @@ function LoginPage(props) {
 													<h2><a className="link" href="/register">Create Account</a></h2>												
 											</div>
 											<div className="pull-right">
-											<h2>	<a className="link" href="#pablo" onClick={(e) => e.preventDefault()} >Need Help?</a></h2>
+											<h2>	<a className="link" href="/forgot-password" >Forgot Password?</a></h2>
 											</div>
 										</CardFooter>
 									</Form>
