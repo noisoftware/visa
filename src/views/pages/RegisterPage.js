@@ -49,9 +49,7 @@ function RegisterPage(props) {
 			//localStorage.setItem('token', token);
 			const successMessage = res.data.msg;
 			setSuccessMessage(successMessage);
-			 const timer = setTimeout(() => {
-			  props.history.push('/login');
-			}, 5000);
+				const timer = setTimeout(() => { props.history.push('/login'); }, 5000);
 			return () => clearTimeout(timer);
 		}else{
 			const errorMessage = res.data.msg;
