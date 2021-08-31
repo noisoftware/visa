@@ -52,11 +52,14 @@ function IndexNavbar() {
       ) : null}
       <Navbar className={"fixed-top " + navbarColor} expand="lg" color="white">
         <Container>
-          <img
+          <NavLink
+                to="/index"
+                tag={Link}
+                ><img
               alt="..."
               className="n-logo"
               src={require("../../assets/img/visite-logo.png").default}
-            ></img>
+            ></img></NavLink>
           <div className="navbar-translate">
             <NavbarBrand
               href="#"

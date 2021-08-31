@@ -47,11 +47,15 @@ function RegisterPage(props) {
 			//const token = res.data.token;
 			//setToken(token);
 			//localStorage.setItem('token', token);
+			window.scrollTo(0, 0);
+			document.body.scrollTop = 0;
 			const successMessage = res.data.msg;
 			setSuccessMessage(successMessage);
 				const timer = setTimeout(() => { props.history.push('/login'); }, 5000);
 			return () => clearTimeout(timer);
 		}else{
+			window.scrollTo(0, 0);
+			document.body.scrollTop = 0;
 			const errorMessage = res.data.msg;
 			setErrorMessage(errorMessage);
 		}
@@ -134,7 +138,7 @@ function RegisterPage(props) {
 												<InputGroupAddon addonType="prepend">
 													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
 												</InputGroupAddon>
-												<Input type="select" name="select" id="exampleSelect" value={accountType} onChange={e => setAccountType(e.currentTarget.value)}>
+												<Input type="select" value={accountType} onChange={e => setAccountType(e.currentTarget.value)}>
 													<option>Select Account Type</option>
 													<option>Personal</option>
 													<option>Corporate</option>
