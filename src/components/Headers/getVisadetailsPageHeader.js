@@ -71,7 +71,7 @@ function GetViasDetailsHeader(props) {
 		<div className="page-header page-header-small">
 			<div className="page-header-image" style={{ backgroundImage: "url(" + require("../../assets/img/bg6.jpg").default + ")", }} ref={pageHeader} ></div>
 			<div className="content-center ">
-				<Container>
+				<Container> 
 					<Row>
 						<Col md="6">
 							<Card  className="text-dark ">

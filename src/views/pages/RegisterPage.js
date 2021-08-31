@@ -153,13 +153,13 @@ function RegisterPage(props) {
 												<InputGroupAddon addonType="prepend">
 													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
 												</InputGroupAddon>
-												<Input placeholder="Password..." type="text" onFocus={() => setPasswordFocus(true)} onBlur={() => setPasswordFocus(false)} value={password} onChange={e => setPassword(e.target.value)} ></Input>
+												<Input placeholder="Password..." type="password" onFocus={() => setPasswordFocus(true)} onBlur={() => setPasswordFocus(false)} value={password} onChange={e => setPassword(e.target.value)} ></Input>
 											</InputGroup>
 											<InputGroup className={"no-border input-lg" + (confirmpasswordFocus ? " input-group-focus" : "")} >
 												<InputGroupAddon addonType="prepend">
 													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
 												</InputGroupAddon>
-												<Input placeholder="Password..." type="text" onFocus={() => setConfirmPasswordFocus(true)} onBlur={() => setConfirmPasswordFocus(false)} value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} ></Input>
+												<Input placeholder="Password..." type="password" onFocus={() => setConfirmPasswordFocus(true)} onBlur={() => setConfirmPasswordFocus(false)} value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} ></Input>
 											</InputGroup>
 											
 										</CardBody>

@@ -46,7 +46,7 @@ function ForgotPasswordPage(props) {
 			setSuccessMessage(successMessage);
 			 const timer = setTimeout(() => {
 			  props.history.push('/login');
-			}, 5000);
+			}, 5000); 
 			return () => clearTimeout(timer);
 			
 		}else{
