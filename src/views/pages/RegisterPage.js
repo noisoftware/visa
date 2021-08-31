@@ -27,22 +27,19 @@ import { config } from '../../constant';
 const getRegisterUrl = config.url.API_URL+"/register";
 
 
-function LoginPage(props) {
+function RegisterPage(props) {
 	
 	const [firstname, setFirstName] = useState();
 	const [lastname, setLastName] = useState();
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
-	const [phone, setPhone] = useState();
-	const [address, setAddress] = useState();
-	const [zipcode, setZipCode] = useState();
-	const [gender, setGender] = useState();
-	//const [token, setToken] = useState();
+	const [confirmPassword, setConfirmPassword] = useState();
+	const [accountType, setAccountType] = useState();
 	const [errorMessage, setErrorMessage] = useState('');
 	const handleSubmit = async e => {
 		e.preventDefault();
 		//alert(`Submitting Name ${email}`);
-		const res = await axios.get(getRegisterUrl,{ params: { firstname: firstname, lastname: lastname, email: email, password: password, phone: phone, address: address, zipcode: zipcode, gender: gender }});
+		const res = await axios.get(getRegisterUrl,{ params: { firstname: firstname, lastname: lastname, email: email, password: password, accounttype:accountType }});
 		console.log(res);
 		props.history.push('/login');
 		/*if(res.data.status === 1){
@@ -60,12 +57,11 @@ function LoginPage(props) {
 	
   const [firstnameFocus, setFirstNameFocus] = React.useState(false);
   const [lastnameFocus, setLastNameFocus] = React.useState(false);
+  const [accounttypeFocus, setAccountTypeFocus] = React.useState(false);
   const [emailFocus, setEmailFocus] = React.useState(false);
   const [passwordFocus, setPasswordFocus] = React.useState(false);
-  const [phoneFocus, setPhoneFocus] = React.useState(false);
-  const [addressFocus, setAddressFocus] = React.useState(false);
-  const [zipcodeFocus, setZipCodeFocus] = React.useState(false);
-  const [genderFocus, setGenderFocus] = React.useState(false);
+  const [confirmpasswordFocus, setConfirmPasswordFocus] = React.useState(false);
+  
   React.useEffect(() => {
     document.body.classList.add("register-page");
 	//document.body.classList.add("login-page");
@@ -128,6 +124,12 @@ function LoginPage(props) {
 												</InputGroupAddon>
 												<Input placeholder="Lastname..." type="text" onFocus={() => setLastNameFocus(true)} onBlur={() => setLastNameFocus(false)} value={lastname} onChange={e => setLastName(e.target.value)} ></Input>
 											</InputGroup>
+											<InputGroup className={"no-border input-lg" + (accounttypeFocus ? " input-group-focus" : "")} >
+												<InputGroupAddon addonType="prepend">
+													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
+												</InputGroupAddon>
+												<Input	placeholder="Account Type..." type="text" onFocus={() => accounttypeFocus(true)} onBlur={() => accounttypeFocus(false)} value={accountType} onChange={e => setAccountType(e.target.value)} ></Input>
+											</InputGroup>
 											<InputGroup className={"no-border input-lg" + (emailFocus ? " input-group-focus" : "")} >
 												<InputGroupAddon addonType="prepend">
 													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
@@ -140,29 +142,11 @@ function LoginPage(props) {
 												</InputGroupAddon>
 												<Input placeholder="Password..." type="text" onFocus={() => setPasswordFocus(true)} onBlur={() => setPasswordFocus(false)} value={password} onChange={e => setPassword(e.target.value)} ></Input>
 											</InputGroup>
-											<InputGroup className={"no-border input-lg" + (phoneFocus ? " input-group-focus" : "")} >
+											<InputGroup className={"no-border input-lg" + (confirmpasswordFocus ? " input-group-focus" : "")} >
 												<InputGroupAddon addonType="prepend">
 													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
 												</InputGroupAddon>
-												<Input placeholder="Phone..." type="text" onFocus={() => setPhoneFocus(true)} onBlur={() => setPhoneFocus(false)} value={phone} onChange={e => setPhone(e.target.value)} ></Input>
-											</InputGroup>
-											<InputGroup className={"no-border input-lg" + (genderFocus ? " input-group-focus" : "")} >
-												<InputGroupAddon addonType="prepend">
-													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
-												</InputGroupAddon>
-												<Input placeholder="Gender..." type="text" onFocus={() => setGenderFocus(true)} onBlur={() => setGenderFocus(false)} value={gender} onChange={e => setGender(e.target.value)} ></Input>
-											</InputGroup>
-											<InputGroup className={"no-border input-lg" + (addressFocus ? " input-group-focus" : "")} >
-												<InputGroupAddon addonType="prepend">
-													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
-												</InputGroupAddon>
-												<Input placeholder="Address..." type="text" onFocus={() => setAddressFocus(true)} onBlur={() => setAddressFocus(false)} value={address} onChange={e => setAddress(e.target.value)} ></Input>
-											</InputGroup>
-											<InputGroup className={"no-border input-lg" + (zipcodeFocus ? " input-group-focus" : "")} >
-												<InputGroupAddon addonType="prepend">
-													<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
-												</InputGroupAddon>
-												<Input placeholder="Zipcode..." type="text" onFocus={() => setZipCodeFocus(true)} onBlur={() => setZipCodeFocus(false)} value={zipcode} onChange={e => setZipCode(e.target.value)} ></Input>
+												<Input placeholder="Password..." type="text" onFocus={() => confirmpasswordFocus(true)} onBlur={() => confirmpasswordFocus(false)} value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} ></Input>
 											</InputGroup>
 											
 										</CardBody>
@@ -189,4 +173,4 @@ function LoginPage(props) {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

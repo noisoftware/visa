@@ -12,6 +12,7 @@ import Index from "./views/Index.js";
 import NucleoIcons from "./views/NucleoIcons.js";
 import LoginPage from "./views/pages/LoginPage.js";
 import RegisterPage from "./views/pages/RegisterPage.js";
+import ForgotPasswordPage from "./views/pages/ForgotPasswordPage.js";
 import ProfilePage from "./views/pages/ProfilePage.js";
 import ContactUspage from "./views/pages/ContactUs.js";
 import GetVisapage from "./views/pages/GetVisa.js";
@@ -20,8 +21,9 @@ import GetVisaFormpage from "./views/pages/GetVisaform.js";
 import VerifyUser from "./views/pages/VerifyUser.js";
 
 
-ReactDOM.render(
 
+ReactDOM.render(
+	
   <BrowserRouter>
     <Switch>
       <Switch>
@@ -45,6 +47,10 @@ ReactDOM.render(
 		<Route
           path="/register"
           render={(props) => <RegisterPage {...props} />}
+        />
+		<Route
+          path="/forgot-password"
+          render={(props) => <ForgotPasswordPage {...props} />}
         />
         <Route
           path="/contact"
