@@ -107,7 +107,7 @@ function LoginPage(props) {
 												<Input placeholder="Password..." type="password" onFocus={() => setLastFocus(true)} onBlur={() => setLastFocus(false)} value={password} onChange={e => setPassword(e.target.value)} ></Input>
 											</InputGroup>
 										</CardBody>
-										<CardFooter className="text-center">
+										<CardFooter className="text-center p-3">
 											<Button type="submit" className="btn-round" color="info"  size="lg" >Login</Button>
 											<div className="pull-left">											
 													<h2><a className="link" href="/register">Create Account</a></h2>												
