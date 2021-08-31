@@ -30,8 +30,13 @@ function GetVisaDetailspage(props) {
 	const getVisaContent = async () => {
 		const res = await axios.get(getVisaContentUrl,{ params: { country: props.match.params.country }});
 		//console.log(response);
-		const visaContent = res.data.content;
-		setVisaContentData(visaContent);
+		if(res.data.status == 1){
+			const visaContent = res.data.content[0].content;
+			setVisaContentData(visaContent);
+		}else{
+			const visaContent = '<p style="text-align: center; border: 1px solid #888888; color: #888888; padding: 10px;">'+res.data.content+'</p>';
+			setVisaContentData(visaContent);
+		}
 		//console.log(pageContent);
 	};
 
@@ -44,7 +49,7 @@ function GetVisaDetailspage(props) {
 		<div className="wrapper">
 			<GetViasDetailsHeader country={props.match.params.country}/>
 			<div className="section Country_visa_details">
-				<Container dangerouslySetInnerHTML={{ __html: visaContent[0].content }}></Container>
+				<Container dangerouslySetInnerHTML={{ __html: visaContent }}></Container>
 			</div>
 			<Carousel />
 			<DefaultFooter />

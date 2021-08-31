@@ -85,7 +85,7 @@ function GetViasDetailsHeader(props) {
 										<Input type="select" name="select" id="exampleSelect" className="rounded-0" value={visa_type_token} onChange={e => setVisaTypeToken(e.currentTarget.value)}>
 											<option>Select Visa Type</option>
 										{ 
-											types.map((typ,index)=>( 
+											types && types.map((typ,index)=>( 
 											<option key={index} value={typ.id}>{typ.visa_type}</option> 
 											))}
 										</Input>
