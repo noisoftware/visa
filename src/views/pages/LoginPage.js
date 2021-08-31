@@ -106,14 +106,11 @@ function LoginPage(props) {
 										</CardBody>
 										<CardFooter className="text-center">
 											<Button type="submit" className="btn-round" color="info"  size="lg" >Login</Button>
-											<div className="pull-left">
-												<h6>
-													<a className="link" href="/register">Create Account</a>
-												</h6>
+											<div className="pull-left">											
+													<h2><a className="link" href="/register">Create Account</a></h2>												
 											</div>
 											<div className="pull-right">
-												<h6><a className="link" href="#pablo" onClick={(e) => e.preventDefault()} >Need Help?</a>
-												</h6>
+											<h2>	<a className="link" href="#pablo" onClick={(e) => e.preventDefault()} >Need Help?</a></h2>
 											</div>
 										</CardFooter>
 									</Form>

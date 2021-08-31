@@ -104,9 +104,11 @@ function LoginPage(props) {
 					<div className="content">
 						<Container>
 							<Col className="ml-auto mr-auto" md="8">
-								<Card className="card-register card-plain">
+								<Card className="card-register mt-5">
 									<Form className="form" method="" onSubmit={handleSubmit}>
-									
+									<CardHeader className="text-center p-3 bg-dark text-light">
+<h4 className="m-0">REGISTER NOW </h4>
+									</CardHeader>
 										<CardBody>
 										{errorMessage && (
 										  <span className="error"> {errorMessage} </span>
