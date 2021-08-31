@@ -78,13 +78,16 @@ function LoginPage(props) {
 					<div className="content">
 						<Container>
 							<Col className="ml-auto mr-auto" md="4">
-								<Card className="card-login card-plain">
+								<Card className="card-login">
 									<Form className="form" method="" onSubmit={handleSubmit}>
-										<CardHeader className="text-center">
+										{/* <CardHeader className="text-center">
 											<div className="logo-container">
 												<img alt="..." src={require("../../assets/img/now-logo.png").default} ></img>
 											</div>
-										</CardHeader>
+										</CardHeader> */}
+										<CardHeader className="text-center p-3 bg-dark text-light">
+<h4 className="m-0">LOGIN NOW </h4>
+									</CardHeader>
 										<CardBody>
 										{errorMessage && (
 										  <p className="error"> {errorMessage} </p>
@@ -104,7 +107,7 @@ function LoginPage(props) {
 												<Input placeholder="Password..." type="password" onFocus={() => setLastFocus(true)} onBlur={() => setLastFocus(false)} value={password} onChange={e => setPassword(e.target.value)} ></Input>
 											</InputGroup>
 										</CardBody>
-										<CardFooter className="text-center">
+										<CardFooter className="text-center p-3">
 											<Button type="submit" className="btn-round" color="info"  size="lg" >Login</Button>
 											<div className="pull-left">											
 													<h2><a className="link" href="/register">Create Account</a></h2>												

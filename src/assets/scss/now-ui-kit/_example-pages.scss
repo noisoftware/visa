@@ -250,8 +250,8 @@
             }
         }
 
-        .input-group:last-child{
-            margin-bottom: 40px;
+        .input-group:first-child{
+            margin-top: 40px;
         }
 
         &.card-plain{
@@ -267,7 +267,7 @@
 
     .link{
         font-size: 10px;
-        color: $white-color;
+        color:$black-color;
         text-decoration: none;
         margin-top: 24px;
     }
