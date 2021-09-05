@@ -231,7 +231,7 @@ function GetVisaFormpage(props) {
 							<Col md={{size:8, offset:2}} >
 								<Card  className="text-dark ">
 									<CardHeader className="text-center p-3 bg-dark text-light">
-										<h4 className="m-0 text-uppercase">APPLY FOR VISA ONLINE{localStorage.getItem('country')+'skjhsjhsjs'}</h4>
+										<h4 className="m-0 text-uppercase">APPLY FOR VISA ONLINE</h4>
 									</CardHeader>
 									
 									<Form className="form" method="post" encType="multipart/form-data" onSubmit={handleSubmit} >                 
