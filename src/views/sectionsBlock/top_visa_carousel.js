@@ -76,7 +76,7 @@ function SimpleSlider() {
 			{ 
 			visa_services.map((visa_service,i)=>(  
 				<div className="p-2" key="{i}">
-					<Card  className="shadow-sm base_holder" to="/landing-page" tag={Link}>
+					<Card  className="shadow-sm base_holder" to={'/getvisadetails/'+visa_service.nicename.replace(' ','-').toLowerCase()} tag={Link}>
 						<CardImg width="100%" src={`http://my-demo.xyz/visa/assets/uploads/visa/${visa_service.image}`} alt="Card image cap" />
 						<CardBody>
 							<CardTitle tag="h5">{visa_service.name}</CardTitle>

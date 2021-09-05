@@ -27,7 +27,7 @@ function GetViasDetailsHeader(props) {
 	const getTypeUrl = config.url.API_URL+"/get-types";
 	const [types, setTypeData] = useState([]);
 	const getTypeWithAxios = async () => {
-		const response = await axios.get(getTypeUrl,{ params: { country: props.country }});
+		const response = await axios.get(getTypeUrl,{ params: { country: props.country.replace('-',' ') }});
 		//console.log(response);
 		const types = response.data.types;
 		setTypeData(types);
@@ -41,14 +41,15 @@ function GetViasDetailsHeader(props) {
 	const handleSubmit = async e => {
 		e.preventDefault();
 		//alert(`Submitting Name ${email}`);
+		console.log(visa_type_token);
 		localStorage.setItem('visa_type_token', visa_type_token);
-			localStorage.setItem('country', props.country);
-		if(!localStorage.getItem('token')){
-			window.location.href = '/login';
-		}else{			
+		localStorage.setItem('country', props.country.replace('-',' '));
+		//if(!localStorage.getItem('token')){
+			//window.location.href = '/login';
+		//}else{			
 			
 			window.location.href = '/visa-form';
-		}
+		//}
 		//setToken(token);
 	}
   let pageHeader = React.createRef();
@@ -76,7 +77,7 @@ function GetViasDetailsHeader(props) {
 						<Col md="6">
 							<Card  className="text-dark ">
 								<CardHeader>
-									<h4 className="text-uppercase">APPLY FOR {props.country} VISA ONLINE</h4>
+									<h4 className="text-uppercase">APPLY FOR {props.country.replace('-',' ')} VISA ONLINE</h4>
 								</CardHeader>
 								<Form className="form" method="" onSubmit={handleSubmit}>                 
 								<CardBody>
@@ -96,7 +97,7 @@ function GetViasDetailsHeader(props) {
 							</Card>
 						</Col>
 						<Col md="6" className="text-left">
-							<h1 className="title">{props.country.charAt(0).toUpperCase()+props.country.slice(1)}</h1>
+							<h1 className="title">{props.country.charAt(0).toUpperCase()+props.country.replace('-',' ').slice(1)}</h1>
 							<h5>eVisa Application</h5>
 						</Col>
 					</Row>
