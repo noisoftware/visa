@@ -15,7 +15,7 @@ export default function basic_information(props) {
     }
 	return (
     <div>
-		<h3 style={{textAlign: 'center'}}>BASIC INFO AND PAYMENT </h3>
+		<h3 style={{textAlign: 'center'}}>BASIC INFORMATION </h3>
 		<FormGroup>
 			<Label for="exampleSelect">Planned day of travel</Label>
 			<Input type="date" placeholder="select date" name="travelling_date" onChange={handleChange} />

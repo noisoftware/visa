@@ -190,6 +190,22 @@ function GetVisaFormpage(props) {
 		.then((response) => {
 			console.log(response);
 		// successfully uploaded response
+			if(response.data.status === 1){
+				//const token = res.data.token;
+				//setToken(token);
+				//localStorage.setItem('token', token);
+				window.scrollTo(0, 0);
+				document.body.scrollTop = 0;
+				const successMessage = response.data.msg;
+				setSuccessMessage(successMessage);
+				const timer = setTimeout(() => { setActive(active + 1); }, 5000);
+				return () => clearTimeout(timer);
+			}else{
+				window.scrollTo(0, 0);
+				document.body.scrollTop = 0;
+				const errorMessage = response.data.msg;
+				setErrorMessage(errorMessage);
+			}
 		})
 		.catch((error) => {
 		// error response
@@ -221,7 +237,12 @@ function GetVisaFormpage(props) {
 									<Form className="form" method="post" encType="multipart/form-data" onSubmit={handleSubmit} >                 
 									<CardBody >
 										<div className="col-10 m-auto">
-											
+											{errorMessage && (
+											  <span className="error"> {errorMessage} </span>
+											)}
+											{successMessage && (
+											  <span className="success"> {successMessage} </span>
+											)}
 											<MultiStepForm activeStep={active} >
 												<Step label='Basic information'>
 													<BasicInfo countries={countries} data={data} onChange={handleChange} />
