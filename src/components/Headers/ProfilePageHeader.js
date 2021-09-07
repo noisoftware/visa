@@ -35,7 +35,7 @@ function ProfilePageHeader() {
           }}
           ref={pageHeader}
         ></div>
-        <Container>
+        <Container className="mt-5">
           <div className="photo-container">
             <img alt="..." src={require("../../assets/img/ryan.jpg").default}></img>
           </div>
