@@ -28,19 +28,27 @@ function IndexHeader() {
 	let pageHeader = React.createRef();
   
 	const [countries, setCountries] = useState();
-	const [country, setCountry] = useState();
+	const [country, setCountry] = useState('');
+	const [errMsg, setErrMsg] = useState();
 	const getCountries = async () => {
 		const res = await axios.get(getCountryUrl);
-		//console.log(res.data.countries);
 		const countries = res.data.countries;
-		setCountries(countries);;
-		console.log(countries);
+		setCountries(countries);
 	};
-	
+	function handleChange(e) {
+		const errMsg = '';
+		setErrMsg(errMsg);
+		setCountry(e.currentTarget.value);
+    }
 	const handleSubmit = async e => {
 		e.preventDefault();
-		window.location.href = '/getvisadetails/'+country.toLowerCase();
-		//console.log(country.toLowerCase());
+		if(country === ''){
+			console.log('please select a country');
+			const errMsg = 'Please select a country';
+			setErrMsg(errMsg);
+		}else{
+			window.location.href = '/getvisadetails/'+country.toLowerCase();
+		}
 	}
 	useEffect(() => {
 		getCountries();
@@ -48,35 +56,15 @@ function IndexHeader() {
 
 	const [countryFocus, setCountryFocus] = React.useState(false);
 	React.useEffect(() => {
-    document.body.classList.add("register-page");
-	//document.body.classList.add("login-page");
-    //document.body.classList.add("sidebar-collapse");
-    //document.documentElement.classList.remove("nav-open");
-  //  window.scrollTo(0, 0);
-    //document.body.scrollTop = 0;
-    return function cleanup() {
-      document.body.classList.remove("register-page");
-//document.body.classList.remove("sidebar-collapse");
-    };
-  }, []);
+		document.body.classList.add("register-page");
+		
+		return function cleanup() {
+		  document.body.classList.remove("register-page");
+	//document.body.classList.remove("sidebar-collapse");
+		};
+	}, []);
 
-  // const [firstFocus, setFirstFocus] = React.useState(false);
-  // const [lastFocus, setLastFocus] = React.useState(false);
-  // React.useEffect(() => {
-  //   document.body.classList.add("login-page");
-  //   document.body.classList.add("sidebar-collapse");
-  //   document.documentElement.classList.remove("nav-open");
-  //   window.scrollTo(0, 0);
-  //   document.body.scrollTop = 0;
-  //   return function cleanup() {
-  //     document.body.classList.remove("login-page");
-  //     document.body.classList.remove("sidebar-collapse");
-  //   };
-  // }, []);
- 
-
-
-
+  
 	return (
 		<>
 			<div className="page-header clear-filter" >
@@ -91,7 +79,7 @@ function IndexHeader() {
 								<Form className="form" method="" onSubmit={handleSubmit}>
 								<CardBody>
 									<InputGroup className={"no-border input-lg" + (countryFocus ? " input-group-focus" : "")}>
-										<Input type="select" onFocus={() => setCountryFocus(true)} onBlur={() => setCountryFocus(false)} value={country} onChange={e => setCountry(e.currentTarget.value)} >
+										<Input type="select" onFocus={() => setCountryFocus(true)} onBlur={() => setCountryFocus(false)} value={country} onChange={handleChange} >
 											<option>Select Destination Country</option>
 											{ 
 											countries && countries.map((contry,index)=>( 
@@ -102,6 +90,9 @@ function IndexHeader() {
 											<Button type="submit" size="lg" className="text-uppercase">Apply Now</Button>
 										</InputGroupAddon>
 									</InputGroup>
+									{errMsg && (
+										  <span className="error"> {errMsg} </span>
+										)}
 								</CardBody>
 								</Form>
 								

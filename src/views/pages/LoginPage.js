@@ -35,22 +35,30 @@ function LoginPage(props) {
 	const handleSubmit = async e => {
 		e.preventDefault();
 		//alert(`Submitting Name ${email}`);
-		const res = await axios.get(getLoginUrl,{ params: { email: email, password: password }});
-		console.log(res);
-		
-		if(res.data.status === 1){
-			const token = res.data.token;
-			setToken(token);
-			localStorage.setItem('token', token);
-			if(!localStorage.getItem('visa_type_token')){
-				props.history.push('/profile');
+		const dataArray = new FormData();		
+		dataArray.append("email", email);
+		dataArray.append("password", password);
+		axios.post(getLoginUrl, dataArray)
+		.then((response) => {
+			//const res = await axios.get(getLoginUrl,{ params: { email: email, password: password }});
+			
+			if(response.data.status === 1){
+				const token = response.data.token;
+				setToken(token);
+				localStorage.setItem('token', token);
+				//if(!localStorage.getItem('visa_type_token')){
+					props.history.push('/profile');
+				//}else{
+					//props.history.push('/visa-form');
+				///}
 			}else{
-				props.history.push('/visa-form');
+				const errorMessage = response.data.msg;
+				setErrorMessage(errorMessage);
 			}
-		}else{
-			const errorMessage = res.data.msg;
-			setErrorMessage(errorMessage);
-		}
+		})
+		.catch((error) => {
+		// error response
+		});
 		//setToken(token);
 	}
 
