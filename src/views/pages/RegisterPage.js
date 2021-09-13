@@ -45,7 +45,7 @@ function RegisterPage(props) {
 		dataArray.append("accounttype", values.accountType);		
 		dataArray.append("email", values.email);
 		dataArray.append("password", values.password);
-		axios.get(getRegisterUrl, dataArray)
+		axios.post(getRegisterUrl, dataArray)
 		.then((response) => {
 			console.log(response);
 		// successfully uploaded response
