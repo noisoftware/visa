@@ -1,21 +1,47 @@
+
+.index-page{
+    .page-header{
+        .brand{
+            .input-group {
+            .input-group-prepend{
+        .btn{ 
+            border-radius: 0 5px 5px 0;
+            background: #6db3f2;
+            background: -moz-linear-gradient(top,  #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
+            background: -webkit-linear-gradient(top,  #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%);
+            background: linear-gradient(to bottom,  #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', endColorstr='#1e69de',GradientType=0 );
+            
+        }
+    }
+    }}
+}
+}
+.error{color: $danger-color;}
+
+
 .section-step{
-        background-image: url(../../img/texture-bg.jpeg);
+       // background-image: url(../../img/texture-bg.jpeg);
+       background-color: $smoke-bg;
         h2{ color: $blue; }
         h4{ color: $primary-color }
+
+       // .bg-primary{}
 }
 
 
 .requirements_slider{
-    background-image: url(../../img/texture-bg.jpeg);
+   // background-image: url(../../img/texture-bg.jpeg);
     h3{ color: $blue; text-transform: uppercase; }
     h4{ color: $primary-color }
 
 .requrement_slider_holder{  
    
-    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
-background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 60%,rgba(255,255,255,0) 100%);
-background: linear-gradient(to bottom,  rgba(255,255,255,1) 60%,rgba(255,255,255,0) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+   
+//     background: -moz-linear-gradient(top,  rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
+// background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 60%,rgba(255,255,255,0) 100%);
+// background: linear-gradient(to bottom,  rgba(255,255,255,1) 60%,rgba(255,255,255,0) 100%);
+// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
 
 
 
@@ -40,6 +66,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 .top_most_slider_holder{
+    background-color: $smoke-bg;
     a{text-decoration:none ;}
     h3{ color: $blue; text-transform: uppercase; }
     h4{ color: $primary-color }

@@ -2,7 +2,7 @@
 
 .form-control {
     background-color: $transparent-bg;
-    border: 1px solid $light-gray;
+    border: 2px solid $blue;
     border-radius: $btn-round-radius;
     color: $black-color;
     height: auto;
@@ -12,7 +12,7 @@
     @include box-shadow(none);
 
     .has-success &{
-        border-color: $light-gray;
+        border-color: $blue;
     }
 
     &:focus{
@@ -23,7 +23,7 @@
 
         & + .input-group-text,
         & ~ .input-group-text{
-            border: 1px solid $primary-color;
+            border: 2px solid $primary-color;
             border-left: none;
             background-color: $transparent-bg;
         }
