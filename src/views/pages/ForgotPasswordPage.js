@@ -39,9 +39,7 @@ function ForgotPasswordPage(props) {
 		console.log(res);
 		//props.history.push('/login');
 		if(res.data.status === 1){
-			//const token = res.data.token;
-			//setToken(token);
-			//localStorage.setItem('token', token);
+			
 			const successMessage = res.data.msg;
 			setSuccessMessage(successMessage);
 			 const timer = setTimeout(() => {
