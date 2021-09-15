@@ -56,7 +56,7 @@ function GetVisaDetailspage(props) {
 				<Container dangerouslySetInnerHTML={{ __html: visaContent }}></Container>
 			</div>
 			v<MessengerCustomerChat
-    pageId="406029802870367"
+    pageId="226579127441153"
     appId="885174415538327"
   />,			<DefaultFooter />
 		</div>
