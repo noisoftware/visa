@@ -33,15 +33,12 @@ import Payment from '../../components/form-steper/Payment.js'
 import Confirmation from '../../components/form-steper/Confirmation.js'
 //import Button from '../../components/form-steper/button.js'
 
-
-
-
-import Carousel from "../sectionsBlock/top_visa_carousel.js";
+//import Carousel from "../sectionsBlock/top_visa_carousel.js";
 const getCountryUrl = config.url.API_URL+"/get-country";
 const getOrderUrl = config.url.API_URL+"/get-order";
 
 function GetVisaFormpage(props) {
-	//console.log(localStorage.getItem('visa_type_token'));
+	//console.log(localStorage.getItem('visa_type_token'));	
 	const [countries, setCountries] = useState();
 	const getCountries = async () => {
 		const res = await axios.get(getCountryUrl);
@@ -214,7 +211,10 @@ function GetVisaFormpage(props) {
 	function handleChange(name,newValue) {
       setData({ ...data, [name]: newValue });
     }
-	
+	const handleNewUserMessage = (newMessage) => {
+		console.log(`New message incoming! ${newMessage}`);
+		// Now send the message throught the backend API
+	};
 	
 	
 	
@@ -223,7 +223,7 @@ function GetVisaFormpage(props) {
     <>
 		<IndexNavbar />
 		<div className="wrapper">
-			<GetViasHeader />
+			
 			<div className="section Country_visa_details">
 				<div className="content-center ">
 					<Container>
@@ -244,16 +244,16 @@ function GetVisaFormpage(props) {
 											  <span className="success"> {successMessage} </span>
 											)}
 											<MultiStepForm activeStep={active} >
-												<Step label='Basic information'>
+												<Step label='Step 1'>
 													<BasicInfo countries={countries} data={data} onChange={handleChange} />
 												</Step>
-												<Step label='Additional Information'>
+												<Step label='Step 2'>
 													<AdditionalInfo countries={countries} data={data} onChange={handleChange} />
 												</Step>
-												<Step label='Payment'>
+												<Step label='Step 3'>
 													<Payment countries={countries} data={data} onChange={handleChange} />
 												</Step>
-												<Step label='confirmation'>
+												<Step label='Step 4'>
 													<Confirmation />
 												</Step>
 											</MultiStepForm>
@@ -283,17 +283,7 @@ function GetVisaFormpage(props) {
 					</Container>
 				</div>
 			</div>
-
-
-
-
-
-
-
-
-
-
-			<Carousel />
+			
 			<DefaultFooter />
 		</div>
     </>

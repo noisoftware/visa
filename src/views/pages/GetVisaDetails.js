@@ -3,6 +3,9 @@ import { config } from '../../constant';
 import axios from "axios";
 // import { Link } from "react-router-dom";
 // reactstrap components
+import ReactDOM from 'react-dom';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
+
 import {
   // Button,
   // NavItem,
@@ -26,6 +29,7 @@ const getVisaContentUrl = config.url.API_URL+"/get-visa-content";
 function GetVisaDetailspage(props) {
   //const { country } = props.match.params.country;
   const [visaContent, setVisaContentData] = useState('visacontent');
+
 
 	const getVisaContent = async () => {
 		const res = await axios.get(getVisaContentUrl,{ params: { country: props.match.params.country }});
@@ -51,8 +55,10 @@ function GetVisaDetailspage(props) {
 			<div className="section Country_visa_details">
 				<Container dangerouslySetInnerHTML={{ __html: visaContent }}></Container>
 			</div>
-			<Carousel />
-			<DefaultFooter />
+			v<MessengerCustomerChat
+    pageId="406029802870367"
+    appId="885174415538327"
+  />,			<DefaultFooter />
 		</div>
     </>
   );

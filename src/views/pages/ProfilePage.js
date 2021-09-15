@@ -43,7 +43,7 @@ function ProfilePage(props) {
 	}, []);
 	const [isOpen, setIsOpen] = useState(false);
 	
-	const [visa, setVisa] = useState({});
+	const [visa, setVisa] = useState('');
 	const getUserVisa = async () => {
 		if(localStorage.getItem('token')){
 			const res = await axios.get(getUserVisaUrl,{ params: { id:localStorage.getItem('token') }});
