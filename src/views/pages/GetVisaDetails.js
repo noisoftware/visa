@@ -3,8 +3,7 @@ import { config } from '../../constant';
 import axios from "axios";
 // import { Link } from "react-router-dom";
 // reactstrap components
-import ReactDOM from 'react-dom';
-import MessengerCustomerChat from 'react-messenger-customer-chat';
+
 
 import {
   // Button,
@@ -55,10 +54,9 @@ function GetVisaDetailspage(props) {
 			<div className="section Country_visa_details">
 				<Container dangerouslySetInnerHTML={{ __html: visaContent }}></Container>
 			</div>
-			v<MessengerCustomerChat
-    pageId="226579127441153"
-    appId="885174415538327"
-  />,			<DefaultFooter />
+			,		
+			
+			<DefaultFooter />
 		</div>
     </>
   );
