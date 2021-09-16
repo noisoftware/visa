@@ -23,6 +23,7 @@ import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
 import DefaultFooter from "../../components/Footers/DefaultFooter.js";
 import GetViasDetailsHeader from "../../components/Headers/getVisadetailsPageHeader.js";
 import Carousel from "../sectionsBlock/top_visa_carousel.js";
+import Faq from "../sectionsBlock/faq.js";
 const getVisaContentUrl = config.url.API_URL+"/get-visa-content";
 
 function GetVisaDetailspage(props) {
@@ -54,7 +55,7 @@ function GetVisaDetailspage(props) {
 			<div className="section Country_visa_details">
 				<Container dangerouslySetInnerHTML={{ __html: visaContent }}></Container>
 			</div>
-			,		
+			<Faq />		
 			
 			<DefaultFooter />
 		</div>
