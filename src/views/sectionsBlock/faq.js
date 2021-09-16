@@ -17,6 +17,7 @@ function Faq() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [collapse, setCollapse] = useState(0);
 	function toggle(e) {
+		setIsOpen(!isOpen);
 		let event = e.target.dataset.event;			
 		setCollapse(Number(event));
 		console.log(collapse);
@@ -29,15 +30,15 @@ function Faq() {
 	}, []);
 	
 	return (
-		<>			
-			<Container>
-				<h3>Visitevisa FAQ</h3>
+		<div className="section">			
+			<Container className="faq-container">
+				<h3 className="faq-title">Visitevisa FAQ</h3>
 				{ 
 				faqs && faqs.map((faq,index)=>(
 				
-				<Card style={{ marginBottom: '1rem' }} key={index}>
-					<CardHeader className="faq-header" onClick={toggle} data-event={index}>{faq.question}</CardHeader>
-					<Collapse isOpen={collapse === index?true:false}>
+				<Card className="faq-card" style={{ marginBottom: '0px' }} key={index}>
+					<CardHeader className="faq-header" >{faq.question}<div className="faq-btn" onClick={toggle} data-event={index} >+</div></CardHeader>
+					<Collapse isOpen={collapse === index?isOpen:false}>
 						<CardBody className="faq-body" dangerouslySetInnerHTML={{ __html: faq.answer }}>
 						
 						</CardBody>
@@ -45,7 +46,7 @@ function Faq() {
                 </Card>
 				))}
 			</Container>			
-		</>
+		</div>
 	);
 }
 
