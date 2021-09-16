@@ -23,7 +23,7 @@ function DefaultFooter() {
 					</nav>
 					<div className="copyright" id="copyright">© {new Date().getFullYear()},VisiteVista  </div>
 					<MessengerCustomerChat pageId="226579127441153" appId="885174415538327" />
-				</Container>
+				</Container> 
 			</footer>
 		</>
 	);
