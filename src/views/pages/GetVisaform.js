@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import useForm from "../../useForm";
+import validate from '../../FormValidationRules';
 import { config } from '../../constant';
 import axios from "axios";
 import { MultiStepForm, Step } from 'react-multi-form';
@@ -13,6 +15,7 @@ import {
   Container, 
   Row,
   Form,
+<<<<<<< HEAD
    CardHeader, CardFooter, 
   CardTitle, CardText
   //Input,
@@ -21,6 +24,12 @@ import {
  // Label,
   // InputGroupText,
   // InputGroup,
+=======
+  Input,
+  FormGroup,
+  Label,
+  CardHeader, 
+>>>>>>> f7ad9d107f97c9fbe465f1ed37b67108537234dd
 } from "reactstrap";
 
 // core components
@@ -36,11 +45,15 @@ import Confirmation from '../../components/form-steper/Confirmation.js'
 
 //import Carousel from "../sectionsBlock/top_visa_carousel.js";
 const getCountryUrl = config.url.API_URL+"/get-country";
+const getVisaPriceUrl = config.url.API_URL+"/get-visa-price";
 const getOrderUrl = config.url.API_URL+"/get-order";
 
 function GetVisaFormpage(props) {
-	//console.log(localStorage.getItem('visa_type_token'));	
+	//console.log(props);	
+	//localStorage.setItem('order_token', '');
+	//localStorage.setItem('token', '');
 	const [countries, setCountries] = useState();
+	const [visaPrice, setVisaPrice] = useState(0);
 	const getCountries = async () => {
 		const res = await axios.get(getCountryUrl);
 		//console.log(res.data.countries);
@@ -48,174 +61,132 @@ function GetVisaFormpage(props) {
 		setCountries(countries);;
 		//console.log(countries);
 	};
-	useEffect(() => {
-		getCountries();
-	}, []);
-	const [active, setActive] = React.useState(1);
-	const [errorMessage, setErrorMessage] = useState('');
-	const [successMessage, setSuccessMessage] = useState('');
-	//const { travelling_date, first_name, last_name, email, phone, setData } = useState();
-	const [data, setData] = React.useState({
-		travelling_date: "",
-		first_name: "",
-		last_name:"",
-		dob: "",
-		email: "",
-		confirm_email: "",
-		phone: "",
-		travel_purpose: "",
-		nationality: "",
-		birth_country: "",
-		gender: "",
-		marital_status: "",
-		occupation: "",
-		passport_no: "",
-		passport_issue_country: "",
-		passport_issue_date: "",
-		passport_expiry_date: "",
-		additional_citizenship: "",
-		applicant_address: "",
-		applicant_city: "",
-		applicant_country: "",
-		vat_invoice_required: "",
-		depature_date: "",
-		passport: null,
-		applicant: null,
-		card_no: "",
-		card_name: "",
-		card_expiry: "",
-		card_cvc: ""
-	})
-	/*const handleSubmit = async e => {
-		e.preventDefault();
-		//alert(`Submitting Name ${email}`);
-		const res = await axios.get(getOrderUrl,{ params: {
-			user_id: localStorage.getItem('token'),
-			travelling_date: data.travelling_date,
-			first_name: data.first_name,
-			last_name: data.last_name,
-			dob: data.dob,
-			email: data.email,
-			confirm_email: data.confirm_email,
-			phone: data.phone,
-			travel_purpose: data.travel_purpose,
-			nationality: data.nationality,
-			birth_country: data.birth_country,
-			gender: data.gender,
-			marital_status: data.marital_status,
-			occupation: data.occupation,
-			passport_no: data.passport_no,
-			passport_issue_country: data.passport_issue_country,
-			passport_issue_date: data.passport_issue_date,
-			passport_expiry_date: data.passport_expiry_date,
-			additional_citizenship: data.additional_citizenship,
-			applicant_address: data.applicant_address,
-			applicant_city: data.applicant_city,
-			applicant_country: data.applicant_country,
-			vat_invoice_required: data.vat_invoice_required,
-			depature_date: data.depature_date,
-			card_no: data.depature_date,
-			card_name: data.depature_date,
-			card_expiry: data.depature_date,
-			card_cvc: data.depature_date,
-			visa_type: localStorage.getItem('visa_type_token'),
-			visa_country: localStorage.getItem('country')
-		}});
-		console.log(res);
-		//props.history.push('/login');
-		if(res.data.status === 1){
-			//const token = res.data.token;
-			//setToken(token);
-			//localStorage.setItem('token', token);
-			window.scrollTo(0, 0);
-			document.body.scrollTop = 0;
-			const successMessage = res.data.msg;
-			setSuccessMessage(successMessage);
-			const timer = setTimeout(() => { setActive(active + 1); }, 5000);
-			return () => clearTimeout(timer);
-		}else{
-			window.scrollTo(0, 0);
-			document.body.scrollTop = 0;
-			const errorMessage = res.data.msg;
-			setErrorMessage(errorMessage);
-		}
-		//setToken(token);
-	}*/
-	/*const handleChange = (name,value) => (e) => {
-		console.log(name);
-		setData({ ...data, [name]: value });
-	};*/
-	const handleSubmit = async e => {
-		e.preventDefault();
-		const dataArray = new FormData();
-		dataArray.append("user_id", localStorage.getItem('token'));
-		dataArray.append("travelling_date", data.travelling_date);
-		dataArray.append("first_name", data.first_name);		
-		dataArray.append("last_name", data.last_name);
-		dataArray.append("dob", data.dob);
-		dataArray.append("email", data.email);
-		dataArray.append("confirm_email", data.confirm_email);
-		dataArray.append("phone", data.phone);
-		dataArray.append("travel_purpose", data.travel_purpose);
-		dataArray.append("nationality", data.nationality);
-		dataArray.append("birth_country", data.birth_country);
-		dataArray.append("gender", data.gender);
-		dataArray.append("marital_status", data.marital_status);
-		dataArray.append("occupation", data.occupation);
-		dataArray.append("passport_no", data.passport_no);
-		dataArray.append("passport_issue_country", data.passport_issue_country);
-		dataArray.append("passport_issue_date", data.passport_issue_date);
-		dataArray.append("passport_expiry_date", data.passport_expiry_date);
-		dataArray.append("additional_citizenship", data.additional_citizenship);
-		dataArray.append("applicant_address", data.applicant_address);
-		dataArray.append("applicant_city", data.applicant_city);
-		dataArray.append("applicant_country", data.applicant_country);
-		dataArray.append("vat_invoice_required", data.vat_invoice_required);
-		dataArray.append("depature_date", data.depature_date);
-		dataArray.append("passport",data.passport);
-		dataArray.append("applicant", data.applicant);
-		dataArray.append("card_no", data.depature_date);
-		dataArray.append("card_name", data.depature_date);
-		dataArray.append("card_expiry", data.depature_date);
-		dataArray.append("card_cvc", data.depature_date);
-		dataArray.append("visa_type", localStorage.getItem('visa_type_token'));
-		dataArray.append("visa_country", localStorage.getItem('country'));
-		axios.post(getOrderUrl, dataArray, {
-			headers: {
-			  "Content-Type": "multipart/form-data"
-			}
-		})
+	const getVisaPrice = async () => {
+		const visPriceArray = new FormData();		
+		visPriceArray.append("country", localStorage.getItem('country'));
+		visPriceArray.append("visa_type", localStorage.getItem('visa_type_token'));
+		axios.post(getVisaPriceUrl, visPriceArray)
 		.then((response) => {
-			console.log(response);
-		// successfully uploaded response
 			if(response.data.status === 1){
-				//const token = res.data.token;
-				//setToken(token);
-				//localStorage.setItem('token', token);
-				window.scrollTo(0, 0);
-				document.body.scrollTop = 0;
-				const successMessage = response.data.msg;
-				setSuccessMessage(successMessage);
-				const timer = setTimeout(() => { setActive(active + 1); }, 5000);
-				return () => clearTimeout(timer);
-			}else{
-				window.scrollTo(0, 0);
-				document.body.scrollTop = 0;
-				const errorMessage = response.data.msg;
-				setErrorMessage(errorMessage);
+				const visaPrice = response.data.price;
+				setVisaPrice(visaPrice);
+				
 			}
 		})
 		.catch((error) => {
 		// error response
 		});
-	}
-	function handleChange(name,newValue) {
-      setData({ ...data, [name]: newValue });
-    }
-	const handleNewUserMessage = (newMessage) => {
-		console.log(`New message incoming! ${newMessage}`);
-		// Now send the message throught the backend API
 	};
+	useEffect(() => {
+		getCountries();
+		getVisaPrice();
+	}, []);
+	const [active, setActive] = React.useState(1);
+	const {
+		values,
+		errors, 
+		handleChange,
+		handleSubmit,
+	} = useForm(order, validate, 'order', active);
+	const [errorMessage, setErrorMessage] = useState('');
+	const [successMessage, setSuccessMessage] = useState('');
+	//const { travelling_date, first_name, last_name, email, phone, setData } = useState();
+	
+	//localStorage.setItem('order_token', '');
+	
+	
+	function order() {
+		
+		console.log('No errors, submit callback called!');
+		console.log(values);
+		if(active === 1){
+			const data1 = new FormData();
+			data1.append("user_id", localStorage.getItem('token'));
+			data1.append("travelling_date", values.travelling_date);
+			data1.append("first_name", values.firstname);		
+			data1.append("last_name", values.lastname);
+			data1.append("dob", values.dob);
+			data1.append("email", values.email);
+			data1.append("confirm_email", values.confirm_email);
+			data1.append("phone", values.phone);
+			data1.append("travel_purpose", values.travel_purpose);
+			data1.append("nationality", values.nationality);
+			data1.append("step", active);
+			data1.append("visa_type", localStorage.getItem('visa_type_token'));
+			data1.append("visa_country", localStorage.getItem('country'));
+			if(localStorage.getItem('order_token')){
+				data1.append("order_id", localStorage.getItem('order_token'));
+			}else{
+				data1.append("order_id", '');
+			}
+			axios.post(getOrderUrl, data1, {
+				headers: {
+				  "Content-Type": "multipart/form-data"
+				}
+			})
+			.then((response) => {
+				console.log(response);
+			// successfully uploaded response
+				if(response.data.status === 1){
+					localStorage.setItem('order_token', response.data.order_id);
+					localStorage.setItem('token', response.data.user_id);
+					const timer = setTimeout(() => { setActive(active + 1); }, 5000);
+					return () => clearTimeout(timer);
+				}else{
+					
+					const errorMessage = response.data.msg;
+					setErrorMessage(errorMessage);
+				}
+			})
+			.catch((error) => {
+			// error response
+			});
+		}else if(active === 2){
+			const data2 = new FormData();
+			data2.append("birth_country", values.birth_country);
+			data2.append("gender", values.gender);
+			data2.append("marital_status", values.marital_status);
+			data2.append("occupation", values.occupation);
+			data2.append("passport_no", values.passport_no);
+			data2.append("passport_issue_country", values.passport_issue_country);
+			data2.append("passport_issue_date", values.passport_issue_date);
+			data2.append("passport_expiry_date", values.passport_expiry_date);
+			data2.append("additional_citizenship", values.additional_citizenship);
+			data2.append("applicant_address", values.applicant_address);
+			data2.append("applicant_city", values.applicant_city);
+			data2.append("applicant_country", values.applicant_country);
+			data2.append("vat_invoice_required", values.vat_invoice_required);
+			data2.append("depature_date", values.depature_date);
+			data2.append("step", active);
+			data2.append("order_id", localStorage.getItem('order_token'));
+			data2.append("user_id", localStorage.getItem('token'));
+			
+			axios.post(getOrderUrl, data2, {
+				headers: {
+				  "Content-Type": "multipart/form-data"
+				}
+			})
+			.then((response) => {
+				console.log(response);
+			// successfully uploaded response
+				if(response.data.status === 1){
+					localStorage.setItem('order_token', response.data.order_id);
+					localStorage.setItem('token', response.data.user_id);
+					const timer = setTimeout(() => { setActive(active + 1); }, 5000);
+					return () => clearTimeout(timer);
+				}else{
+					
+					const errorMessage = response.data.msg;
+					setErrorMessage(errorMessage);
+				}
+			})
+			.catch((error) => {
+			// error response
+			});
+		}else if(active === 3){
+		}
+		
+	}
 	
 	
 	
@@ -228,9 +199,14 @@ function GetVisaFormpage(props) {
 			<div className=" country_visa_form">
 				<div className="content-center ">
 					<Container>
+<<<<<<< HEAD
 
 						<Row >
 							<Col md="8" >
+=======
+						<Row>
+							<Col md={{size:8, offset:1}} >
+>>>>>>> f7ad9d107f97c9fbe465f1ed37b67108537234dd
 								<Card  className="text-dark ">
 									<CardHeader className="text-center p-3 bg-dark text-light">
 										<h4 className="m-0 text-uppercase">APPLY FOR VISA ONLINE</h4>
@@ -247,13 +223,13 @@ function GetVisaFormpage(props) {
 											)}
 											<MultiStepForm activeStep={active} >
 												<Step label='Step 1'>
-													<BasicInfo countries={countries} data={data} onChange={handleChange} />
+													<BasicInfo countries={countries} values={values} errors={errors} onChange={handleChange} />
 												</Step>
 												<Step label='Step 2'>
-													<AdditionalInfo countries={countries} data={data} onChange={handleChange} />
+													<AdditionalInfo countries={countries} values={values} errors={errors} onChange={handleChange} />
 												</Step>
 												<Step label='Step 3'>
-													<Payment countries={countries} data={data} onChange={handleChange} />
+													<Payment countries={countries} values={values} errors={errors} onChange={handleChange} />
 												</Step>
 												<Step label='Step 4'>
 													<Confirmation />
@@ -264,11 +240,11 @@ function GetVisaFormpage(props) {
 												<Button onClick={() => setActive(active - 1)}>Previous</Button>
 											  )}
 											  {active < 3 && (
-											  <Button onClick={() => setActive(active + 1)} style={{ float: 'right' }} >Next</Button>
+											  <Button type="submit" style={{ float: 'right' }} >Save and Next</Button>
 											  )}
 											  {active === 3 && (
 												/*<Button onClick={() => setActive(active + 1)} style={{ float: 'right' }} >Save and continue</Button>*/
-												<Button type="submit" style={{ float: 'right' }} >Save and continue</Button>
+												<Button type="submit" style={{ float: 'right' }} >Pay & Continue</Button>
 											  )}
 	
 											<div className="clearfix"></div>
@@ -281,6 +257,7 @@ function GetVisaFormpage(props) {
 									</Form>
 								</Card>
 							</Col>
+<<<<<<< HEAD
 							<Col md="4">
 							<Card>
 							<CardHeader className="text-center p-3 bg-dark text-light">
@@ -297,6 +274,21 @@ Available payment methods:</p>
         </CardBody>
         
       </Card>
+=======
+							<Col md={{size:2}}>
+								
+								<div className="country-pay">
+									<FormGroup>
+										<Label for="exampleSelect">Country</Label>
+										<Input type="text" name="country" value={localStorage.getItem('country').charAt(0).toUpperCase()+localStorage.getItem('country').replace('-',' ').slice(1)} />
+									</FormGroup>
+									<FormGroup>
+										<Label for="exampleSelect">Full Price</Label>
+										<Input type="text" name="price" value={visaPrice} />
+									</FormGroup>
+								</div>
+									
+>>>>>>> f7ad9d107f97c9fbe465f1ed37b67108537234dd
 							</Col>
 						</Row>
 					</Container>

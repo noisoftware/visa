@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { config } from '../../constant';
+
 
 
 
@@ -26,7 +25,7 @@ import {
 
 function GetViasDetailsHeader(props) {
 	//console.log(props.country);
-	const getTypeUrl = config.url.API_URL+"/get-types";
+	/*const getTypeUrl = config.url.API_URL+"/get-types";
 	const [types, setTypeData] = useState([]);
 	const getTypeWithAxios = async () => {
 		const response = await axios.get(getTypeUrl,{ params: { country: props.country.replace('-',' ') }});
@@ -53,7 +52,7 @@ function GetViasDetailsHeader(props) {
 			window.location.href = '/visa-form';
 		//}
 		//setToken(token);
-	}
+	}*/
   let pageHeader = React.createRef();
 
   React.useEffect(() => {
@@ -103,7 +102,7 @@ function GetViasDetailsHeader(props) {
 						<Col md="8" className="text-left">
 							
 							<h1 className="title">{props.country.charAt(0).toUpperCase()+props.country.replace('-',' ').slice(1)}</h1>
-							<h5>eVisa Application</h5>
+							<h5>Visitevisa Application</h5>
 						</Col>
 					
 					</Row>
