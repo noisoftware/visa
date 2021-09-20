@@ -19,6 +19,8 @@ import {
   FormGroup,
   Label,
   CardHeader, 
+   CardText, 
+  CardTitle
 } from "reactstrap";
 
 // core components
@@ -185,11 +187,11 @@ function GetVisaFormpage(props) {
 		<IndexNavbar />
 		<div className="wrapper">
 			
-			<div className="section Country_visa_details">
+			<div className=" country_visa_form">
 				<div className="content-center ">
 					<Container>
 						<Row>
-							<Col md={{size:8, offset:1}} >
+							<Col md="8" >
 								<Card  className="text-dark ">
 									<CardHeader className="text-center p-3 bg-dark text-light">
 										<h4 className="m-0 text-uppercase">APPLY FOR VISA ONLINE</h4>
@@ -240,17 +242,28 @@ function GetVisaFormpage(props) {
 									</Form>
 								</Card>
 							</Col>
-							<Col md={{size:2}}>
+							<Col md="4">
 								
 								<div className="country-pay">
-									<FormGroup>
-										<Label for="exampleSelect">Country</Label>
-										<Input type="text" name="country" value={localStorage.getItem('country').charAt(0).toUpperCase()+localStorage.getItem('country').replace('-',' ').slice(1)} />
-									</FormGroup>
-									<FormGroup>
-										<Label for="exampleSelect">Full Price</Label>
-										<Input type="text" name="price" value={visaPrice} />
-									</FormGroup>
+
+								<Card>
+       
+        <CardBody>
+          <CardText>
+			  
+			<FormGroup>
+				<Label for="exampleSelect">Country</Label>
+				<Input type="text" name="country" value={localStorage.getItem('country').charAt(0).toUpperCase()+localStorage.getItem('country').replace('-',' ').slice(1)} />
+			</FormGroup>
+			<FormGroup>
+				<Label for="exampleSelect">Full Price</Label>
+				<Input type="text" name="price" value={visaPrice} />
+			</FormGroup>
+
+		  </CardText>
+        </CardBody>
+      </Card>
+								
 								</div>
 									
 							</Col>

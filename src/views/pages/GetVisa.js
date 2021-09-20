@@ -26,10 +26,11 @@ function GetVisapage() {
     <>
       <IndexNavbar />
       <div className="wrapper">
+		  <div className="container">
       <GetViasHeader />
        
 
-        <div className="section requirements_slider">
+        <div className="section requirements_slider bg-light mb-4">
               <Container>
              
               {/* flag holder */}
@@ -96,7 +97,7 @@ function GetVisapage() {
 
                   
                 
-        
+        </div>
         <DefaultFooter />
       </div>
     </>

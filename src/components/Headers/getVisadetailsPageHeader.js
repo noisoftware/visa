@@ -73,10 +73,7 @@ function GetViasDetailsHeader(props) {
 			<div className="content-center ">
 				<Container> 
 					<Row>
-						<Col md="6">
-							
-						</Col>
-						<Col md="6" className="text-left">
+						<Col md="12" className="text-center">
 							<h1 className="title">{props.country.charAt(0).toUpperCase()+props.country.replace('-',' ').slice(1)}</h1>
 							<h5>Visitevisa Application</h5>
 						</Col>
