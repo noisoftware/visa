@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react"; 
-
-
+import React, { useState, useEffect } from "react";
 
 
 // reactstrap components
@@ -70,48 +68,22 @@ function GetViasDetailsHeader(props) {
   });
   return (
     <>
-
-
 		<div className="page-header page-header-small">
 			<div className="page-header-image" style={{ backgroundImage: "url(" + require("../../assets/img/bg6.jpg").default + ")", }} ref={pageHeader} ></div>
 			<div className="content-center ">
 				<Container> 
 					<Row>
-						<Col md="4">
-							<Card  className="text-dark ">
-								<CardHeader>
-									<h4 className="text-uppercase">APPLY FOR {props.country.replace('-',' ')} VISA ONLINE</h4>
-								</CardHeader>
-								<Form className="form" method="" onSubmit={handleSubmit}>                 
-								<CardBody>
-									<FormGroup>
-										<Label for="exampleSelect">Purpose for travelSelect purpose</Label>
-										<Input type="select" name="select" id="exampleSelect" className="rounded-0" value={visa_type_token} onChange={e => setVisaTypeToken(e.currentTarget.value)}>
-											<option>Select Visa Type</option>
-										{ 
-											types && types.map((typ,index)=>( 
-											<option key={index} value={typ.id}>{typ.visa_type}</option> 
-											))}
-										</Input>
-									</FormGroup>
-									<Button type="submit" color="primary" className="btn-block text-uppertcase">Apply Online</Button>{' '}
-								</CardBody>
-								</Form>
-							</Card>
-						</Col>
-						<Col md="8" className="text-left">
+						<Col md="6">
 							
+						</Col>
+						<Col md="6" className="text-left">
 							<h1 className="title">{props.country.charAt(0).toUpperCase()+props.country.replace('-',' ').slice(1)}</h1>
 							<h5>Visitevisa Application</h5>
 						</Col>
-					
 					</Row>
 				</Container>
 			</div>
-	
-
 		</div>
-		
     </>
   );
 }

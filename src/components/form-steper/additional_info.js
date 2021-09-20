@@ -3,7 +3,7 @@ import React from 'react';
 
 
 // reactstrap components
-import {  FormGroup, Label, Input} from 'reactstrap';
+import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 
 export default function additional_information(props) {
