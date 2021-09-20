@@ -34,13 +34,15 @@ import Confirmation from '../../components/form-steper/Confirmation.js'
 
 //import Carousel from "../sectionsBlock/top_visa_carousel.js";
 const getCountryUrl = config.url.API_URL+"/get-country";
+const getVisaPriceUrl = config.url.API_URL+"/get-visa-price";
 const getOrderUrl = config.url.API_URL+"/get-order";
 
 function GetVisaFormpage(props) {
-	//console.log(localStorage.getItem('visa_type_token'));	
+	//console.log(props);	
 	//localStorage.setItem('order_token', '');
 	//localStorage.setItem('token', '');
 	const [countries, setCountries] = useState();
+	const [visaPrice, setVisaPrice] = useState(0);
 	const getCountries = async () => {
 		const res = await axios.get(getCountryUrl);
 		//console.log(res.data.countries);
@@ -48,8 +50,25 @@ function GetVisaFormpage(props) {
 		setCountries(countries);;
 		//console.log(countries);
 	};
+	const getVisaPrice = async () => {
+		const visPriceArray = new FormData();		
+		visPriceArray.append("country", localStorage.getItem('country'));
+		visPriceArray.append("visa_type", localStorage.getItem('visa_type_token'));
+		axios.post(getVisaPriceUrl, visPriceArray)
+		.then((response) => {
+			if(response.data.status === 1){
+				const visaPrice = response.data.price;
+				setVisaPrice(visaPrice);
+				
+			}
+		})
+		.catch((error) => {
+		// error response
+		});
+	};
 	useEffect(() => {
 		getCountries();
+		getVisaPrice();
 	}, []);
 	const [active, setActive] = React.useState(1);
 	const {
@@ -57,12 +76,12 @@ function GetVisaFormpage(props) {
 		errors, 
 		handleChange,
 		handleSubmit,
-	} = useForm(order, validate, 'order');
+	} = useForm(order, validate, 'order', active);
 	const [errorMessage, setErrorMessage] = useState('');
 	const [successMessage, setSuccessMessage] = useState('');
 	//const { travelling_date, first_name, last_name, email, phone, setData } = useState();
 	
-	
+	//localStorage.setItem('order_token', '');
 	
 	
 	function order() {
@@ -170,7 +189,7 @@ function GetVisaFormpage(props) {
 				<div className="content-center ">
 					<Container>
 						<Row>
-							<Col md={{size:8, offset:2}} >
+							<Col md={{size:8, offset:1}} >
 								<Card  className="text-dark ">
 									<CardHeader className="text-center p-3 bg-dark text-light">
 										<h4 className="m-0 text-uppercase">APPLY FOR VISA ONLINE</h4>
@@ -208,7 +227,7 @@ function GetVisaFormpage(props) {
 											  )}
 											  {active === 3 && (
 												/*<Button onClick={() => setActive(active + 1)} style={{ float: 'right' }} >Save and continue</Button>*/
-												<Button type="submit" style={{ float: 'right' }} >Save and continue</Button>
+												<Button type="submit" style={{ float: 'right' }} >Pay & Continue</Button>
 											  )}
 	
 											<div className="clearfix"></div>
@@ -220,6 +239,20 @@ function GetVisaFormpage(props) {
 									</CardBody>
 									</Form>
 								</Card>
+							</Col>
+							<Col md={{size:2}}>
+								
+								<div className="country-pay">
+									<FormGroup>
+										<Label for="exampleSelect">Country</Label>
+										<Input type="text" name="country" value={localStorage.getItem('country').charAt(0).toUpperCase()+localStorage.getItem('country').replace('-',' ').slice(1)} />
+									</FormGroup>
+									<FormGroup>
+										<Label for="exampleSelect">Full Price</Label>
+										<Input type="text" name="price" value={visaPrice} />
+									</FormGroup>
+								</div>
+									
 							</Col>
 						</Row>
 					</Container>

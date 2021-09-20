@@ -26,13 +26,13 @@ const getRegisterUrl = config.url.API_URL+"/register";
   
 
 function RegisterPage(props) {
-	
+	const [active, setActive] = React.useState(1);
 	const {
 		values,
 		errors,
 		handleChange,
 		handleSubmit,
-	} = useForm(register, validate, 'register');
+	} = useForm(register, validate, 'register',active);
 	const [errorMessage, setErrorMessage] = useState('');
 	const [successMessage, setSuccessMessage] = useState('');
 	

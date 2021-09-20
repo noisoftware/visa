@@ -5,7 +5,7 @@ export default function Payment(props) {
 	function handleChange(event) {
         // Here, we invoke the callback with the new value
 		//console.log(event.target.type);
-		props.onChange(event.target.name,event.target.value);
+		props.onChange(event);
     }
   return (
     <div>
