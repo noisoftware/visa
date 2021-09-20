@@ -10,18 +10,10 @@ export default function additional_information(props) {
 	function handleChange(event) {
         // Here, we invoke the callback with the new value
 		//console.log(event.target.type);
-		if(event.target.type == 'file'){
-			console.log(event.target.files[0]);
-			props.onChange(event.target.name,event.target.files[0]);
-		}else{
-			props.onChange(event.target.name,event.target.value);
-		}
+		props.onChange(event);
+		
     }
-	function handleUpload(event) {
-        // Here, we invoke the callback with the new value
-		//console.log(event.target.value);
-        props.onChange(event.target.name,event.target.files);
-    }
+	
 	return (
     <div>
 		<h3 style={{textAlign: 'center'}}>Additional Information </h3>
@@ -139,36 +131,7 @@ export default function additional_information(props) {
 			<Label for="depature_date">Expected departure date</Label>
 			<Input type="date" placeholder="Contact phone number" name="depature_date" onChange={handleChange} />
 		</FormGroup>
-		<h4>Necessary documents</h4>
-		<p>We accept documents in jpg, pdf, png and tiff formats. The required documents can be uploaded in the form of a photo, scan or photo using a webcam (if your web browser allows it).</p>
-
-		<div className="form-check">
-			<label className="form-check-label">
-				<input className="form-check-input" type="checkbox" value=""/>
-				I will upload documents later
-				<span className="form-check-sign">
-					<span className="check"></span>
-				</span>
-			</label>
-		</div>
-
-		<p color="orange">We will send a message to your email which explains how you can upload the documents. Please load documents within 48 hours.</p>
-		<h5>Biographical page of passport</h5>
-		<p>All four corners should be shown up on the final scanned image. Image must be clear and legible.</p>
-
-		<FormGroup>
-			<Label for="passport" className="btn-primary btn">Upload passport</Label>
-			<Input type="file" id="passport" name="passport" onChange={handleChange} />
-		</FormGroup>
-		<FormGroup></FormGroup>
-		<h5>Applicants' photograph</h5>
-		<p>Photograph have to complies with the passport photo guidelines</p>
-
-		<FormGroup>
-			<Label for="exampleSelect" className="btn-primary btn">Upload passport size photograph</Label>
-			<Input type="file" id="applicant" name="applicant" onChange={handleChange}/>
-		</FormGroup>
-		<FormGroup></FormGroup>
+		
     </div>
   )
 }

@@ -8,19 +8,27 @@ const useForm = (callback, validate) => {
 
 	useEffect(() => {
 		if (Object.keys(errors).length === 0 && isSubmitting) {
+			//console.log(callback);
 			callback();
 		}
+		//console.log(errors);
 	}, [errors]);
 
 	const handleSubmit = (event) => {
 		if (event) event.preventDefault();
+		
 		setErrors(validate(values));
 		setIsSubmitting(true);
 	};
 
 	const handleChange = (event) => {
 		event.persist();
-		setValues(values => ({ ...values, [event.target.name]: event.target.value }));
+		if(event.target.type === 'checkbox'){
+			//console.log(event.target.checked);
+			setValues(values => ({ ...values, [event.target.name]: event.target.checked }));
+		}else{
+			setValues(values => ({ ...values, [event.target.name]: event.target.value }));
+		}
 	};
 
 	return {

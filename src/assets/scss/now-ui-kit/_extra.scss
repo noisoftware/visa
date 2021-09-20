@@ -110,7 +110,17 @@
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
-    padding-left: 15px
+    padding-left: 15px;
 }
+.apply-form {
+    position: fixed;
+    float: left;   
+    padding: 10px;
+	z-index: 1032;
+	top:75px;
+	left:65px;
+	width:500px;
+}
+
 
 
