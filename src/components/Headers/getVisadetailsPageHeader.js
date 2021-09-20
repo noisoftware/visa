@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { config } from '../../constant';
 
+
+
 // reactstrap components
 import { 
   Card,
@@ -69,12 +71,14 @@ function GetViasDetailsHeader(props) {
   });
   return (
     <>
+
+
 		<div className="page-header page-header-small">
 			<div className="page-header-image" style={{ backgroundImage: "url(" + require("../../assets/img/bg6.jpg").default + ")", }} ref={pageHeader} ></div>
 			<div className="content-center ">
 				<Container> 
 					<Row>
-						<Col md="6">
+						<Col md="4">
 							<Card  className="text-dark ">
 								<CardHeader>
 									<h4 className="text-uppercase">APPLY FOR {props.country.replace('-',' ')} VISA ONLINE</h4>
@@ -96,14 +100,19 @@ function GetViasDetailsHeader(props) {
 								</Form>
 							</Card>
 						</Col>
-						<Col md="6" className="text-left">
+						<Col md="8" className="text-left">
+							
 							<h1 className="title">{props.country.charAt(0).toUpperCase()+props.country.replace('-',' ').slice(1)}</h1>
 							<h5>eVisa Application</h5>
 						</Col>
+					
 					</Row>
 				</Container>
 			</div>
+	
+
 		</div>
+		
     </>
   );
 }

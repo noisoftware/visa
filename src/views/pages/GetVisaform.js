@@ -13,19 +13,20 @@ import {
   Container, 
   Row,
   Form,
-  Input,
-  FormGroup,
+   CardHeader, CardFooter, 
+  CardTitle, CardText
+  //Input,
+  //FormGroup,
   // InputGroupAddon,
-  Label,
+ // Label,
   // InputGroupText,
   // InputGroup,
-  CardHeader, 
 } from "reactstrap";
 
 // core components
 import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
 import DefaultFooter from "../../components/Footers/DefaultFooter.js";
-import GetViasHeader from "../../components/Headers/GetvisaPageHeader.js";
+//import GetViasHeader from "../../components/Headers/GetvisaPageHeader.js";
 
 import BasicInfo from '../../components/form-steper/basic_information.js'
 import AdditionalInfo from '../../components/form-steper/additional_info.js'
@@ -224,11 +225,12 @@ function GetVisaFormpage(props) {
 		<IndexNavbar />
 		<div className="wrapper">
 			
-			<div className="section Country_visa_details">
+			<div className=" country_visa_form">
 				<div className="content-center ">
 					<Container>
-						<Row>
-							<Col md={{size:8, offset:2}} >
+
+						<Row >
+							<Col md="8" >
 								<Card  className="text-dark ">
 									<CardHeader className="text-center p-3 bg-dark text-light">
 										<h4 className="m-0 text-uppercase">APPLY FOR VISA ONLINE</h4>
@@ -278,6 +280,23 @@ function GetVisaFormpage(props) {
 									</CardBody>
 									</Form>
 								</Card>
+							</Col>
+							<Col md="4">
+							<Card>
+							<CardHeader className="text-center p-3 bg-dark text-light">
+										<h4 className="m-0 text-uppercase">Destination: USA</h4>
+									</CardHeader>
+        <CardBody>
+          <CardText><p>Full price : $99.00</p>
+
+<p>Price may vary depending on currency
+Available payment methods:</p>
+
+		  </CardText>
+          
+        </CardBody>
+        
+      </Card>
 							</Col>
 						</Row>
 					</Container>
