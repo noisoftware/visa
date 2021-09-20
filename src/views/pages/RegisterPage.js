@@ -32,9 +32,12 @@ function RegisterPage(props) {
 		errors,
 		handleChange,
 		handleSubmit,
-	} = useForm(register, validate, 'register',active);
+	} = useForm(register, validate, 'register',active,changeVal);
 	const [errorMessage, setErrorMessage] = useState('');
 	const [successMessage, setSuccessMessage] = useState('');
+	
+	function changeVal(){
+	}
 	
 	function register() {
 		console.log('No errors, submit callback called!');

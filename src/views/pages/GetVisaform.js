@@ -36,6 +36,7 @@ import Confirmation from '../../components/form-steper/Confirmation.js'
 
 //import Carousel from "../sectionsBlock/top_visa_carousel.js";
 const getCountryUrl = config.url.API_URL+"/get-country";
+const getTypeUrl = config.url.API_URL+"/get-types";
 const getVisaPriceUrl = config.url.API_URL+"/get-visa-price";
 const getOrderUrl = config.url.API_URL+"/get-order";
 
@@ -68,9 +69,18 @@ function GetVisaFormpage(props) {
 		// error response
 		});
 	};
+	const [types, setTypeData] = useState([]);
+	const getTypeWithAxios = async () => {
+		const response = await axios.get(getTypeUrl,{ params: { country: localStorage.getItem('country').replace('-',' '), }});
+		//console.log(response);
+		const types = response.data.types;
+		setTypeData(types);
+		//console.log(posts);
+	};
 	useEffect(() => {
 		getCountries();
 		getVisaPrice();
+		getTypeWithAxios();
 	}, []);
 	const [active, setActive] = React.useState(1);
 	const {
@@ -78,13 +88,28 @@ function GetVisaFormpage(props) {
 		errors, 
 		handleChange,
 		handleSubmit,
-	} = useForm(order, validate, 'order', active);
+	} = useForm(order, validate, 'order', active, changePrice);
 	const [errorMessage, setErrorMessage] = useState('');
 	const [successMessage, setSuccessMessage] = useState('');
 	//const { travelling_date, first_name, last_name, email, phone, setData } = useState();
-	
+	//values.travel_purpose = localStorage.getItem('visa_type_token');
 	//localStorage.setItem('order_token', '');
-	
+	function changePrice(val){console.log('aaaa');
+		const visaPriceArray = new FormData();		
+		visaPriceArray.append("country", localStorage.getItem('country'));
+		visaPriceArray.append("visa_type", val);
+		axios.post(getVisaPriceUrl, visaPriceArray)
+		.then((response) => {
+			if(response.data.status === 1){
+				const visaPrice = response.data.price;
+				setVisaPrice(visaPrice);
+				
+			}
+		})
+		.catch((error) => {
+		// error response
+		});
+	}
 	
 	function order() {
 		
@@ -103,7 +128,7 @@ function GetVisaFormpage(props) {
 			data1.append("travel_purpose", values.travel_purpose);
 			data1.append("nationality", values.nationality);
 			data1.append("step", active);
-			data1.append("visa_type", localStorage.getItem('visa_type_token'));
+			data1.append("visa_type", values.travel_purpose);
 			data1.append("visa_country", localStorage.getItem('country'));
 			if(localStorage.getItem('order_token')){
 				data1.append("order_id", localStorage.getItem('order_token'));
@@ -208,7 +233,7 @@ function GetVisaFormpage(props) {
 											)}
 											<MultiStepForm activeStep={active} >
 												<Step label='Step 1'>
-													<BasicInfo countries={countries} values={values} errors={errors} onChange={handleChange} />
+													<BasicInfo countries={countries} types={types} values={values} errors={errors} onChange={handleChange} />
 												</Step>
 												<Step label='Step 2'>
 													<AdditionalInfo countries={countries} values={values} errors={errors} onChange={handleChange} />
@@ -243,36 +268,29 @@ function GetVisaFormpage(props) {
 								</Card>
 							</Col>
 							<Col md="4">
-								
 								<div className="country-pay">
-
-								<Card>
-								<CardHeader className="text-center p-3 bg-dark text-light">
-										<h4 className="m-0 text-uppercase">APPLY FOR VISA ONLINE</h4>
-									</CardHeader>
-        <CardBody>
-          <CardText>
-			  
-
-	
-			<FormGroup row>
-				<Label  sm={4}>Country:</Label>
-				<Col sm={8}><Input className="border-0" type="text" name="country" value={localStorage.getItem('country').charAt(0).toUpperCase()+localStorage.getItem('country').replace('-',' ').slice(1)} /></Col>
-			</FormGroup>
-			<FormGroup row>
-				<Label  sm={4}>Full Price:</Label>
-				<Col sm={8}><Input className="border-0" type="text" name="price" value={visaPrice} /></Col>
-			</FormGroup>
-			<hr/>
-			<p>Price will be shown after the required fields are filled</p>
-			<hr/>
-<p>Price depends on the following fields: <strong>Type of visa</strong></p>
-		  </CardText>
-        </CardBody>
-      </Card>
-								
+									<Card>
+										<CardHeader className="text-center p-3 bg-dark text-light">
+											<h4 className="m-0 text-uppercase">APPLY FOR VISA ONLINE</h4>
+										</CardHeader>
+										<CardBody>
+											<CardText>
+												<FormGroup row>
+													<Label  sm={4}>Country:</Label>
+													<Col sm={8}><Input className="border-0" type="text" name="country" value={localStorage.getItem('country').charAt(0).toUpperCase()+localStorage.getItem('country').replace('-',' ').slice(1)} /></Col>
+												</FormGroup>
+												<FormGroup row>
+													<Label  sm={4}>Full Price:</Label>
+													<Col sm={8}><Input className="border-0" type="text" name="price" value={visaPrice} /></Col>
+												</FormGroup>
+												<hr/>
+												<p>Price will be shown after the required fields are filled</p>
+												<hr/>
+												<p>Price depends on the following fields: <strong>Purpose for travel</strong></p>
+											</CardText>
+										</CardBody>
+									</Card>
 								</div>
-									
 							</Col>
 						</Row>
 					</Container>

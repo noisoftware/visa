@@ -54,10 +54,12 @@ export default function basic_information(props) {
 		</FormGroup>
 		<FormGroup>
 			<Label for="exampleSelect">Purpose for travel</Label>
-			<Input type="select" id="travel_purpose" name="travel_purpose" onChange={handleChange} value={props.values.travel_purpose || ''} >
+			<Input type="select" id="travel_purpose" name="travel_purpose" onChange={handleChange} value={props.values.travel_purpose || localStorage.getItem('visa_type_token')} >
 				<option value="">Select Travel Purpose</option>
-				<option value="Business">Business</option>
-				<option value="Tourism">Tourism</option>
+				{ 
+				props.types && props.types.map((typ,ind)=>( 
+				<option key={ind} value={typ.id}>{typ.visa_type}</option> 
+				))}
 			</Input>
 			{props.errors.travel_purpose && ( <p className="help is-danger">{props.errors.travel_purpose}</p> )}
 		</FormGroup>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useForm = (callback, validate, name, step) => {
+const useForm = (callback, validate, name, step, fldOnChange) => {
 
 	const [values, setValues] = useState({});
 	const [errors, setErrors] = useState({});
@@ -25,8 +25,13 @@ const useForm = (callback, validate, name, step) => {
 		if(event.target.type === 'checkbox'){
 			//console.log(event.target.checked);
 			setValues(values => ({ ...values, [event.target.name]: event.target.checked }));
-		}else{
+		}else{			
 			setValues(values => ({ ...values, [event.target.name]: event.target.value }));
+			
+			if(event.target.name == 'travel_purpose'){
+				console.log('asaassas');
+				fldOnChange(event.target.value);
+			}
 		}
 	};
 
