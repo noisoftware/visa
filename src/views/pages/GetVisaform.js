@@ -38,6 +38,8 @@ const getOrderUrl = config.url.API_URL+"/get-order";
 
 function GetVisaFormpage(props) {
 	//console.log(localStorage.getItem('visa_type_token'));	
+	localStorage.setItem('order_token', '');
+		localStorage.setItem('token', '');
 	const [countries, setCountries] = useState();
 	const getCountries = async () => {
 		const res = await axios.get(getCountryUrl);
@@ -55,7 +57,7 @@ function GetVisaFormpage(props) {
 		errors, 
 		handleChange,
 		handleSubmit,
-	} = useForm(order, validate);
+	} = useForm(order, validate, 'order');
 	const [errorMessage, setErrorMessage] = useState('');
 	const [successMessage, setSuccessMessage] = useState('');
 	//const { travelling_date, first_name, last_name, email, phone, setData } = useState();
@@ -64,6 +66,7 @@ function GetVisaFormpage(props) {
 	
 	
 	function order() {
+		
 		console.log('No errors, submit callback called!');
 		console.log(values);
 		if(active === 1){
