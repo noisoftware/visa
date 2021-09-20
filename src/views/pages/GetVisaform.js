@@ -38,8 +38,8 @@ const getOrderUrl = config.url.API_URL+"/get-order";
 
 function GetVisaFormpage(props) {
 	//console.log(localStorage.getItem('visa_type_token'));	
-	localStorage.setItem('order_token', '');
-		localStorage.setItem('token', '');
+	//localStorage.setItem('order_token', '');
+	//localStorage.setItem('token', '');
 	const [countries, setCountries] = useState();
 	const getCountries = async () => {
 		const res = await axios.get(getCountryUrl);
