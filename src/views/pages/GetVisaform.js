@@ -247,19 +247,26 @@ function GetVisaFormpage(props) {
 								<div className="country-pay">
 
 								<Card>
-       
+								<CardHeader className="text-center p-3 bg-dark text-light">
+										<h4 className="m-0 text-uppercase">APPLY FOR VISA ONLINE</h4>
+									</CardHeader>
         <CardBody>
           <CardText>
 			  
-			<FormGroup>
-				<Label for="exampleSelect">Country</Label>
-				<Input type="text" name="country" value={localStorage.getItem('country').charAt(0).toUpperCase()+localStorage.getItem('country').replace('-',' ').slice(1)} />
-			</FormGroup>
-			<FormGroup>
-				<Label for="exampleSelect">Full Price</Label>
-				<Input type="text" name="price" value={visaPrice} />
-			</FormGroup>
 
+	
+			<FormGroup row>
+				<Label  sm={4}>Country:</Label>
+				<Col sm={8}><Input className="border-0" type="text" name="country" value={localStorage.getItem('country').charAt(0).toUpperCase()+localStorage.getItem('country').replace('-',' ').slice(1)} /></Col>
+			</FormGroup>
+			<FormGroup row>
+				<Label  sm={4}>Full Price:</Label>
+				<Col sm={8}><Input className="border-0" type="text" name="price" value={visaPrice} /></Col>
+			</FormGroup>
+			<hr/>
+			<p>Price will be shown after the required fields are filled</p>
+			<hr/>
+<p>Price depends on the following fields: <strong>Type of visa</strong></p>
 		  </CardText>
         </CardBody>
       </Card>
