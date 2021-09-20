@@ -12,8 +12,10 @@ import {
   Container,
   Row,
   Col,
-  ListGroup, ListGroupItem,FormGroup, Label, Input, Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle
+  ListGroup, ListGroupItem,FormGroup, Label, Input, Card, 
+ // CardImg, CardText,
+   CardBody,
+ // CardTitle, CardSubtitle
 } from "reactstrap";
 
 // core components

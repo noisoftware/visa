@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "reactstrap";
+//import { Container } from "reactstrap";
 import { Collapse, CardBody, Card, CardHeader } from 'reactstrap';
 import axios from "axios";
 import { config } from '../../constant';
@@ -7,6 +7,10 @@ const getFaqUrl = config.url.API_URL+"/get-faqs";
 
 
 function Faq() {
+
+
+
+
 	const [faqs, setFaq] = useState('');
 	const getFaqs = async () => {		
 		const res = await axios.get(getFaqUrl);
@@ -30,8 +34,8 @@ function Faq() {
 	}, []);
 	
 	return (
-		<div className="section">			
-			<Container className="faq-container">
+		<div >			
+			<div className="faq-container">
 				<h3 className="faq-title">Visitevisa FAQ</h3>
 				{ 
 				faqs && faqs.map((faq,index)=>(
@@ -45,8 +49,9 @@ function Faq() {
 					</Collapse>
                 </Card>
 				))}
-			</Container>			
+			</div>			
 		</div>
+
 	);
 }
 
