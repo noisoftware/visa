@@ -91,7 +91,7 @@ function GetVisaDetailspage(props) {
 								
 						<Card  className="text-dark">
 							<CardHeader className="p-4">
-								<h4 className="text-uppercase" >APPLY FOR {props.match.params.country.replace('-',' ')}  VISA ONLINE</h4>
+								<h5 className="text-uppercase" >APPLY FOR {props.match.params.country.replace('-',' ')}  VISA ONLINE</h5>
 							</CardHeader>
 							<Form className="form" method="" onSubmit={handleSubmit}>                 
 							<CardBody>
