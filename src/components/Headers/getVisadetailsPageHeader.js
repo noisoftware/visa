@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 
 // reactstrap components
 import { 
-  Card,
-  CardBody,
+  
   Col,
-  Button, 
   Container, 
   Row,
-  Form,
-  Input,
-  FormGroup,
-  // InputGroupAddon,
-  Label,
-  // InputGroupText,
-  // InputGroup,
-  CardHeader, 
+  
 } from "reactstrap";
 
 // core components

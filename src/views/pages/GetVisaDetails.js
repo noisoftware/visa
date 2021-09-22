@@ -9,8 +9,7 @@ import {
   Card,
   CardBody,
   Col,
-  Button, 
-  Container,  
+  Button,  
   Row,
   Form,
   Input,
@@ -20,8 +19,8 @@ import {
   // InputGroupText,
   // InputGroup,
   CardHeader, 
-   CardText,
-  CardTitle, CardSubtitle
+  // CardText,
+  CardTitle
 } from "reactstrap";
 
 
@@ -30,7 +29,7 @@ import {
 import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
 import DefaultFooter from "../../components/Footers/DefaultFooter.js";
 import GetViasDetailsHeader from "../../components/Headers/getVisadetailsPageHeader.js";
-import Carousel from "../sectionsBlock/top_visa_carousel.js";
+//import Carousel from "../sectionsBlock/top_visa_carousel.js";
 import Faq from "../sectionsBlock/faq.js";
 const getVisaContentUrl = config.url.API_URL+"/get-visa-content";
 const getTypeUrl = config.url.API_URL+"/get-types";
@@ -61,7 +60,7 @@ function GetVisaDetailspage(props) {
 	const getVisaContent = async () => {
 		const res = await axios.get(getVisaContentUrl,{ params: { country: props.match.params.country }});
 		//console.log(response);
-		if(res.data.status == 1){
+		if(res.data.status === 1){
 			const visaContent = res.data.content[0].content;
 			setVisaContentData(visaContent);
 		}else{
@@ -118,7 +117,7 @@ function GetVisaDetailspage(props) {
         <CardBody>
           <CardTitle tag="h2">Armeina eVisa Information
 </CardTitle>
-          <CardText>
+          
 	<p>	  Armenia eVisa is an electronic visa introduced in 2014 by the Government of the Kingdom of Armeina in order to allow citizens of eligible countries to visit the country for tourism and business purposes.</p>
 <p>The eVisa for Armeina is available as a single and multiple entry online visa and allows a stay from 14 to 90 days depending on its type.</p>
 <p>eVisa is electronically linked to the applicant's passport, so visitors no longer need to go to a Armeina embassy to get a regular visa.</p>
@@ -133,13 +132,13 @@ function GetVisaDetailspage(props) {
 
 
 			  
-			  </CardText>
+			  
         </CardBody>
       </Card>
 	  <Card>
         <CardBody>
           <CardTitle tag="h2">Required documents</CardTitle>
-          <CardText>
+          
 	<p>	  Time to apply! Citizens of all eligible countries (list above) can apply online with the following documents on hand:</p>
 			  
 			  <ul>
@@ -164,7 +163,7 @@ ALL FOREIGN NATIONALS residing in GCC countries (GCC Visa) should provide the fo
 				  <li>Copy of a resident card from one of the GCC countries</li>
 			  </ul>
 			  
-			  </CardText>
+			  
         </CardBody>
       </Card>
 				{/* <Container dangerouslySetInnerHTML={{ __html: visaContent }}></Container> */}

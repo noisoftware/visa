@@ -12,8 +12,7 @@ import {
   Container,
   Row,
   Col,
-  ListGroup, ListGroupItem,FormGroup, Label, Input, Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle
+  ListGroup, ListGroupItem,FormGroup, Label, Input, Card, CardBody
 } from "reactstrap";
 
 // core components
@@ -61,16 +60,18 @@ function ProfilePage(props) {
 	/*function handleChange(event) {
 		//props.onChange(event.target.name,event.target.value);
 	}*/
-	
+	const [active, setActive] = useState(1);
 	const {
 		values,
 		errors,
 		handleChange,
 		handleSubmit,
-	} = useForm(login, validate);
+	} = useForm(register, validate, 'register',active,changeVal);
 	const [errorMessage, setErrorMessage] = useState('');
 	const [successMessage, setSuccessMessage] = useState('');
-	function login() {
+	function changeVal(){
+	}
+	function register() {
 		console.log('No errors, submit callback called!');
 		
 		console.log(values);

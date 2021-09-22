@@ -26,7 +26,7 @@ const getRegisterUrl = config.url.API_URL+"/register";
   
 
 function RegisterPage(props) {
-	const [active, setActive] = React.useState(1);
+	const [active, setActive] = useState(1);
 	const {
 		values,
 		errors,
@@ -135,7 +135,7 @@ function RegisterPage(props) {
 									<InputGroupAddon addonType="prepend">
 										<InputGroupText><i className="now-ui-icons users_circle-08"></i></InputGroupText>
 									</InputGroupAddon>
-									<Input type="select" name="accountType" onChange={handleChange} value={values.accountType || ''} >
+									<Input type="select" onFocus={() => setAccountTypeFocus(true)} onBlur={() => setAccountTypeFocus(false)} name="accountType" onChange={handleChange} value={values.accountType || ''} >
 										<option>Select Account Type</option>
 										<option>Personal</option>
 										<option>Corporate</option>

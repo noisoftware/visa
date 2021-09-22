@@ -7,6 +7,7 @@ const useForm = (callback, validate, name, step, fldOnChange) => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	useEffect(() => {
+		//console.log('form_load');
 		if (Object.keys(errors).length === 0 && isSubmitting) {
 			//console.log(callback);
 			callback();
@@ -28,8 +29,7 @@ const useForm = (callback, validate, name, step, fldOnChange) => {
 		}else{			
 			setValues(values => ({ ...values, [event.target.name]: event.target.value }));
 			
-			if(event.target.name == 'travel_purpose'){
-				console.log('asaassas');
+			if(event.target.name === 'travel_purpose'){
 				fldOnChange(event.target.value);
 			}
 		}

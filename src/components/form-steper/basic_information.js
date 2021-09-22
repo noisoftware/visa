@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 //import Input from './input';
 
 
 // reactstrap components
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { FormGroup, Label, Input } from 'reactstrap';
 
 
 export default function basic_information(props) {
-	console.log(props);
 	function handleChange(event) {
         // Here, we invoke the callback with the new value
 		//console.log(event.target.value);
@@ -54,7 +53,7 @@ export default function basic_information(props) {
 		</FormGroup>
 		<FormGroup>
 			<Label for="exampleSelect">Purpose for travel</Label>
-			<Input type="select" id="travel_purpose" name="travel_purpose" onChange={handleChange} value={props.values.travel_purpose || localStorage.getItem('visa_type_token')} >
+			<Input type="select" id="travel_purpose" name="travel_purpose" onChange={handleChange} value={props.values.travel_purpose || ''} >
 				<option value="">Select Travel Purpose</option>
 				{ 
 				props.types && props.types.map((typ,ind)=>( 

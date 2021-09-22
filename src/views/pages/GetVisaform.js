@@ -15,18 +15,18 @@ import {
   Container, 
   Row,
   Form,
-  Input,
+  //Input,
   FormGroup,
   Label,
   CardHeader, 
-   CardText, 
-  CardTitle
+  // CardText, 
+  //CardTitle
 } from "reactstrap";
 
 // core components
 import IndexNavbar from "../../components/Navbars/IndexNavbar.js";
 import DefaultFooter from "../../components/Footers/DefaultFooter.js";
-import GetViasHeader from "../../components/Headers/GetvisaPageHeader.js";
+//import GetViasHeader from "../../components/Headers/GetvisaPageHeader.js";
 
 import BasicInfo from '../../components/form-steper/basic_information.js'
 import AdditionalInfo from '../../components/form-steper/additional_info.js'
@@ -44,6 +44,16 @@ function GetVisaFormpage(props) {
 	//console.log(props);	
 	//localStorage.setItem('order_token', '');
 	//localStorage.setItem('token', '');
+	const [active, setActive] = React.useState(1);
+	const {
+		values,
+		errors, 
+		handleChange,
+		handleSubmit,
+	} = useForm(order, validate, 'order', active, changePrice);
+	const [errorMessage, setErrorMessage] = useState('');
+	//const [successMessage, setSuccessMessage] = useState('');
+	
 	const [countries, setCountries] = useState();
 	const [visaPrice, setVisaPrice] = useState(0);
 	const getCountries = async () => {
@@ -81,16 +91,9 @@ function GetVisaFormpage(props) {
 		getCountries();
 		getVisaPrice();
 		getTypeWithAxios();
+		values.travel_purpose = localStorage.getItem('visa_type_token');
 	}, []);
-	const [active, setActive] = React.useState(1);
-	const {
-		values,
-		errors, 
-		handleChange,
-		handleSubmit,
-	} = useForm(order, validate, 'order', active, changePrice);
-	const [errorMessage, setErrorMessage] = useState('');
-	const [successMessage, setSuccessMessage] = useState('');
+	
 	//const { travelling_date, first_name, last_name, email, phone, setData } = useState();
 	//values.travel_purpose = localStorage.getItem('visa_type_token');
 	//localStorage.setItem('order_token', '');
@@ -225,12 +228,12 @@ function GetVisaFormpage(props) {
 									<Form className="form" method="post" encType="multipart/form-data" onSubmit={handleSubmit} >                 
 									<CardBody >
 										<div className="col-10 m-auto">
-											{errorMessage && (
+											{/*errorMessage && (
 											  <span className="error"> {errorMessage} </span>
 											)}
 											{successMessage && (
 											  <span className="success"> {successMessage} </span>
-											)}
+											)*/}
 											<MultiStepForm activeStep={active} >
 												<Step label='Step 1'>
 													<BasicInfo countries={countries} types={types} values={values} errors={errors} onChange={handleChange} />
@@ -274,20 +277,20 @@ function GetVisaFormpage(props) {
 											<h4 className="m-0 text-uppercase">APPLY FOR VISA ONLINE</h4>
 										</CardHeader>
 										<CardBody>
-											<CardText>
+											
 												<FormGroup row>
 													<Label  sm={4}>Country:</Label>
-													<Col sm={8}><Input className="border-0" type="text" name="country" value={localStorage.getItem('country').charAt(0).toUpperCase()+localStorage.getItem('country').replace('-',' ').slice(1)} /></Col>
+													<Col sm={8}><span className="country">{localStorage.getItem('country').charAt(0).toUpperCase()+localStorage.getItem('country').replace('-',' ').slice(1)}</span></Col>
 												</FormGroup>
 												<FormGroup row>
 													<Label  sm={4}>Full Price:</Label>
-													<Col sm={8}><Input className="border-0" type="text" name="price" value={visaPrice} /></Col>
+													<Col sm={8}><span className="price">{visaPrice}</span></Col>
 												</FormGroup>
 												<hr/>
 												<p>Price will be shown after the required fields are filled</p>
 												<hr/>
 												<p>Price depends on the following fields: <strong>Purpose for travel</strong></p>
-											</CardText>
+											
 										</CardBody>
 									</Card>
 								</div>
